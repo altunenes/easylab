@@ -55,7 +55,7 @@ def delete():
     folder = folder_path.get()
     for root, dirs, files in os.walk(folder):
         for file in files:
-            if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg"):
+            if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg") or file.endswith(".bmp") or file.endswith(".tif"):
                 path = os.path.join(root, file)
                 os.remove(path)
     messagebox.showinfo("Success", "Successfully Deleted")
