@@ -3,6 +3,7 @@
 # ==========================================================================================================================================================
 
 
+
 import os
 from tkinter import *
 from tkinter import filedialog
@@ -30,7 +31,7 @@ def resize():
     height = int(height)
     for root, dirs, files in os.walk(folder):
         for file in files:
-            if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg"):
+            if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg") or file.endswith(".bmp") or file.endswith(".tif"):
                 path = os.path.join(root, file)
                 img = Image.open(path)
                 img = img.resize((width, height), Image.ANTIALIAS)
@@ -55,7 +56,7 @@ def delete():
     folder = folder_path.get()
     for root, dirs, files in os.walk(folder):
         for file in files:
-            if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg") or file.endswith(".bmp") or file.endswith(".tif"):
+            if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg") or file.endswith(".BMP") or file.endswith(".tif"):
                 path = os.path.join(root, file)
                 os.remove(path)
     messagebox.showinfo("Success", "Successfully Deleted")
