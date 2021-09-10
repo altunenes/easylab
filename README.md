@@ -1,7 +1,7 @@
 # EasyLab
 basic lab tools with GUI
 # Usage
-It's easy, just select your folder where your images are stored and select extension and size. "Rename" button will change all images' names like this "image", "1 image","2 image"... and so on...  
+It's easy, just select your folder where your images are stored and select extension and size. "Rename" button will change all images' names like this: "0image", "1image","2image"... and so on...  
 
 The extension button transforms images' extensions to the desired extension.
 
