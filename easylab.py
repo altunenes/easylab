@@ -25,7 +25,7 @@ from matplotlib import pyplot as plt
 
 root = Tk()
 root.title("Easy Lab")
-root.geometry("500x500")
+root.geometry("600x600")
 root.configure(background="white")
 
 
@@ -55,8 +55,6 @@ def resize():
     messagebox.showinfo("Success", "Successfully Resized")
 
 
-
-
 # function to rename
 def rename():
     global folder_path
@@ -66,7 +64,10 @@ def rename():
 
     for index, file in enumerate(files):
         os.rename(os.path.join(folder, file), os.path.join(folder, 'image'.join([str(index), '.' + f'{extension}'])))
+        # os.rename(os.path.join(folder, file), os.path.join(folder, 'image'.join([str(index), '.' + f'{extension}'])))
+
     messagebox.showinfo("Success", "Successfully Renamed")
+
 
 
 # function to delete
@@ -126,6 +127,9 @@ def lowfrequencydomain():
     rms=float(rms_entry.get())
     cutoff=float(cutoff_entry.get())
     n=int(n_entry.get())
+    width_SF=float(width_SF_entry.get())
+    height_SF=float(height_SF_entry.get())
+
     for root, dirs, files in os.walk(folder):
         for file in files:
             if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg") or file.endswith(
@@ -134,6 +138,7 @@ def lowfrequencydomain():
                 img = cv2.imread(path,0)
                 raw_img = (img / 255.0) * 2.0 - 1.0
                 rms = rms
+                w,h=img.shape
 
                 # make the mean to be zero
                 raw_img = raw_img - np.mean(raw_img)
@@ -166,16 +171,18 @@ def lowfrequencydomain():
 
                 # there may be some stray values outside of the presentable range; convert < -1
                 # to -1 and > 1 to 1
+                plt.figure(figsize=(width_SF, height_SF), dpi=100)
 
                 img_new = np.clip(img_new, a_min=-1.0, a_max=1.0)
-                plt.imshow(img_new, cmap='gray')
 
+                plt.imshow(img_new, cmap='gray')
                 plt.subplots_adjust(left=0, right=1, bottom=0, top=1)
+
                 plt.axis("off")
                 plt.rcParams['figure.facecolor'] = 'gray'
                 plt.axis('tight')
                 #save figures with different names
-                plt.savefig(path, bbox_inches='tight', pad_inches=0)
+                plt.savefig(path, bbox_inches='tight', pad_inches=0,dpi=1000) #, bbox_inches='tight', pad_inches=0
                 plt.close()
 
     messagebox.showinfo("Success", "Successfully Converted to Frequency Domain")
@@ -187,6 +194,10 @@ def highfrequencybandfilter():
     rms = float(rms_entry.get())
     cutoff=float(cutoff_entry.get())
     n=int(n_entry.get())
+    width_SF=float(width_SF_entry.get())
+
+    height_SF=float(height_SF_entry.get())
+
     for root, dirs, files in os.walk(folder):
         for file in files:
             if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg") or file.endswith(
@@ -218,6 +229,8 @@ def highfrequencybandfilter():
                 img_new = img_new - np.mean(img_new)
                 img_new = img_new / np.std(img_new)
                 img_new = img_new * rms
+                plt.figure(figsize=(width_SF, height_SF), dpi=100)
+
 
                 img_new = np.clip(img_new, a_min=-1.0, a_max=1.0)
                 plt.imshow(img_new, cmap='gray')
@@ -227,7 +240,7 @@ def highfrequencybandfilter():
                 plt.rcParams['figure.facecolor'] = 'gray'
                 plt.axis('tight')
                 #save figures with different names
-                plt.savefig(path, bbox_inches='tight', pad_inches=0)
+                plt.savefig(path, bbox_inches='tight', pad_inches=0,dpi=1000) #, bbox_inches='tight', pad_inches=0
                 plt.close()
 
     messagebox.showinfo("Success", "Successfully High Frequency Band Filter")
@@ -246,6 +259,7 @@ title.place(x=100, y=10)
 # browse button
 browse_button = Button(root, text="Browse", command=browseFiles, bg="white", font=("Times", 12, "bold"))
 browse_button.place(x=130, y=50)
+
 
 
 # folder path
@@ -301,11 +315,24 @@ n_entry.place(x=360,y=420)
 n_label = Label(root, text="N", bg="white", font=("Times", 12, "bold"))
 n_label.place(x=300, y=420)
 
+#width_SF entry
+width_SF_entry = Entry(root, width=6, bg="white", font=("Times", 8, "italic"))
+width_SF_entry.place(x=500,y=420)
+#width_SF label
+width_SF_label = Label(root, text="Width SF", bg="white", font=("Times", 8, "italic"))
+width_SF_label.place(x=450, y=420)
+#height_SF entry
+height_SF_entry = Entry(root, width=6, bg="white", font=("Times", 8, "italic"))
+height_SF_entry.place(x=505,y=440)
+#height_SF label
+height_SF_label = Label(root, text="Height SF", bg="white", font=("Times", 8, "italic"))
+height_SF_label.place(x=450, y=440)
 
 
 # extension entry
 extension_label = Label(root, text="extension", bg="white", font=("Times", 12, "bold"))
 extension_label.place(x=300, y=50)
+
 
 # extension entry
 extension_entry = Entry(root, width=5, bg="white", font=("Times", 12, "bold"))
@@ -357,6 +384,7 @@ lowfrequencydomain_button.place(x=240, y=445)
 #highfrequencybandfilter button
 highfrequencybandfilter_button = Button(root, text="high Frequency Band Filter", command=highfrequencybandfilter, bg="white", font=("Times", 12, "bold"))
 highfrequencybandfilter_button.place(x=240, y=470)
+
 
 
 
