@@ -16,6 +16,9 @@ Blur button applies gaussian blur to all images (you need to define sigma and ke
 
 Low and High Spatial filter buttons applies Butterworth class of filter with given cutoff frequency. For details see the Psychopy: [Psychopy](https://psychopy.org/api/filters.html)
 
+Matplotlib doesn't work with pixels directly, but rather physical sizes and DPI. If you want to display a figure with certain pixel size, you need to know the DPI of your monitor. I added two labels; just enter your desired dimensions (it will be multiplied with 1000; for example, if you want 800x800 pixels enter the 0.8 for both labels).
+ 
+ 
  
 ![image](https://user-images.githubusercontent.com/54986652/142766685-48aac293-2889-4e0b-b0c7-01b5d6bdb1d0.png)
 
