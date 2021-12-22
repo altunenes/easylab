@@ -20,5 +20,4 @@ Matplotlib doesn't work with pixels directly, but rather physical sizes and DPI.
  
  
  
-![image](https://user-images.githubusercontent.com/54986652/142766685-48aac293-2889-4e0b-b0c7-01b5d6bdb1d0.png)
-
+![image](https://user-images.githubusercontent.com/54986652/147148597-c1e1eb89-b11b-4ab6-be6c-0ff466487b88.png)
