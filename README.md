@@ -4,7 +4,7 @@ basic lab tools with GUI
 It's easy, just select your folder where your images are stored and select extension and size. "Rename" button will change all images' names like this: "0image", "1image","2image"... and so on...  
 
 # Read before the usage!
- this program replaces the original images with the desired images. Be sure to copy the originals of the images elsewhere.
+ this program replaces the original images with the desired images. Be sure to copy the original ones elsewhere.
  
  ---------------
 
