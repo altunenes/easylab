@@ -1,17 +1,12 @@
 # ==========================================================================================================================================================
                                                                      
-                                                                        # EasyLab 1.0 
+                                                                        # EasyLab 1.1 
                                                               
-                                                                    #Enes Altun 21/11/2021
+                                                                    #Enes Altun 03/16/2022
     
                                                                       #Just run the script
       
 # ==========================================================================================================================================================
-
-
-
-
-
 
 import os
 from tkinter import *
@@ -35,25 +30,33 @@ def browseFiles():
     filename = filedialog.askdirectory()
     folder_path.set(filename)
 
+#browse file to save files
+
+def outputfile():
+    global output_path
+    filename = filedialog.askdirectory()
+    output_path.set(filename)
+
+
+
 
 # function to resize
 def resize():
     global folder_path
     folder = folder_path.get()
+    output=output_path.get()
     width = width_entry.get()
     height = height_entry.get()
     width = int(width)
     height = int(height)
-    for root, dirs, files in os.walk(folder):
-        for file in files:
-            if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg") or file.endswith(
-                    ".bmp") or file.endswith(".tif"):
-                path = os.path.join(root, file)
-                img = Image.open(path)
-                img = img.resize((width, height), Image.ANTIALIAS)
-                img.save(path)
-    messagebox.showinfo("Success", "Successfully Resized")
-
+    for filename in os.listdir(folder):
+        img = cv2.imread(os.path.join(folder,filename))
+        if img is not None:
+            resized_image = cv2.resize(img,(width,height))
+            cv2.imwrite(os.path.join(output,filename),resized_image)
+            messagebox.showinfo("Success","Resized images saved in output folder")
+        else:
+            messagebox.showerror("Error","No such file or directory")
 
 # function to rename
 def rename():
@@ -67,7 +70,6 @@ def rename():
         # os.rename(os.path.join(folder, file), os.path.join(folder, 'image'.join([str(index), '.' + f'{extension}'])))
 
     messagebox.showinfo("Success", "Successfully Renamed")
-
 
 
 # function to delete
@@ -89,11 +91,12 @@ def clear():
     width_entry.delete(0, END)
     height_entry.delete(0, END)
 
+
 def blur():
     global folder_path
     folder = folder_path.get()
-    kernelsize=int(kernelsize_entry.get())
-    sigma=int(sigmasize_entry.get())
+    kernelsize = int(kernelsize_entry.get())
+    sigma = int(sigmasize_entry.get())
 
     for root, dirs, files in os.walk(folder):
         for file in files:
@@ -105,6 +108,24 @@ def blur():
 
                 cv2.imwrite(path, img12)
     messagebox.showinfo("Success", "Successfully Blurred")
+
+
+def change_extension():
+    global folder_path
+    folder = folder_path.get()
+    output=output_path.get()
+    extension = extension_entry.get()
+    for filename in os.listdir(folder):
+        img = cv2.imread(os.path.join(folder,filename))
+        if img is not None:
+            name = filename.split(".")
+            new_name = name[0]+"."+extension
+            cv2.imwrite(os.path.join(output,new_name),img)
+            messagebox.showinfo("Success","Extensions changed, images saved in output folder")
+        else:
+            messagebox.showerror("Error","No such file or directory")
+
+
 
 def gray():
     global folder_path
@@ -120,25 +141,25 @@ def gray():
     messagebox.showinfo("Success", "Successfully Converted to Gray")
 
 
-#frequency domain with fouirer transform
+# frequency domain with fouirer transform
 def lowfrequencydomain():
     global folder_path
     folder = folder_path.get()
-    rms=float(rms_entry.get())
-    cutoff=float(cutoff_entry.get())
-    n=int(n_entry.get())
-    width_SF=float(width_SF_entry.get())
-    height_SF=float(height_SF_entry.get())
+    rms = float(rms_entry.get())
+    cutoff = float(cutoff_entry.get())
+    n = int(n_entry.get())
+    width_SF = float(width_SF_entry.get())
+    height_SF = float(height_SF_entry.get())
 
     for root, dirs, files in os.walk(folder):
         for file in files:
             if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg") or file.endswith(
                     ".bmp") or file.endswith(".tif"):
                 path = os.path.join(root, file)
-                img = cv2.imread(path,0)
+                img = cv2.imread(path, 0)
                 raw_img = (img / 255.0) * 2.0 - 1.0
                 rms = rms
-                w,h=img.shape
+                w, h = img.shape
 
                 # make the mean to be zero
                 raw_img = raw_img - np.mean(raw_img)
@@ -181,22 +202,23 @@ def lowfrequencydomain():
                 plt.axis("off")
                 plt.rcParams['figure.facecolor'] = 'gray'
                 plt.axis('tight')
-                #save figures with different names
-                plt.savefig(path, bbox_inches='tight', pad_inches=0,dpi=1000) #, bbox_inches='tight', pad_inches=0
+                # save figures with different names
+                plt.savefig(path, bbox_inches='tight', pad_inches=0, dpi=1000)  # , bbox_inches='tight', pad_inches=0
                 plt.close()
 
-    messagebox.showinfo("Success", "Successfully Converted to low Frequency Domain")
+    messagebox.showinfo("Success", "Successfully Converted to Frequency Domain")
+
 
 # High Frequency Band Filter
 def highfrequencybandfilter():
     global folder_path
     folder = folder_path.get()
     rms = float(rms_entry.get())
-    cutoff=float(cutoff_entry.get())
-    n=int(n_entry.get())
-    width_SF=float(width_SF_entry.get())
+    cutoff = float(cutoff_entry.get())
+    n = int(n_entry.get())
+    width_SF = float(width_SF_entry.get())
 
-    height_SF=float(height_SF_entry.get())
+    height_SF = float(height_SF_entry.get())
 
     for root, dirs, files in os.walk(folder):
         for file in files:
@@ -206,14 +228,14 @@ def highfrequencybandfilter():
                 img = cv2.imread(path)
                 raw_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
                 raw_img = (raw_img / 255.0) * 2.0 - 1.0
-                #standart deviation of the contrast of the image
+                # standart deviation of the contrast of the image
                 rms = rms
                 raw_img = raw_img - np.mean(raw_img)
                 raw_img = raw_img / np.std(raw_img)
                 raw_img = raw_img * rms
 
                 img_freq = np.fft.fft2(raw_img)
-                #size: width height
+                # size: width height
                 hp_filt = filters.butter2d_hp(
                     size=raw_img.shape,
                     cutoff=cutoff,
@@ -231,7 +253,6 @@ def highfrequencybandfilter():
                 img_new = img_new * rms
                 plt.figure(figsize=(width_SF, height_SF), dpi=100)
 
-
                 img_new = np.clip(img_new, a_min=-1.0, a_max=1.0)
                 plt.imshow(img_new, cmap='gray')
 
@@ -239,12 +260,11 @@ def highfrequencybandfilter():
                 plt.axis("off")
                 plt.rcParams['figure.facecolor'] = 'gray'
                 plt.axis('tight')
-                #save figures with different names
-                plt.savefig(path, bbox_inches='tight', pad_inches=0,dpi=1000) #, bbox_inches='tight', pad_inches=0
+                # save figures with different names
+                plt.savefig(path, bbox_inches='tight', pad_inches=0, dpi=1000)  # , bbox_inches='tight', pad_inches=0
                 plt.close()
 
-    messagebox.showinfo("Success", "High Frequency Band Filter")
-
+    messagebox.showinfo("Success", "Successfully High Frequency Band Filter")
 
 
 # function to exit
@@ -260,11 +280,15 @@ title.place(x=100, y=10)
 browse_button = Button(root, text="Browse", command=browseFiles, bg="white", font=("Times", 12, "bold"))
 browse_button.place(x=130, y=50)
 
-
-
+#output button
+output_button= Button(root,text="Output",command=outputfile,bg="white",font=("Times",12,"bold"))
+output_button.place(x=130,y=80)
 # folder path
 folder_path = StringVar()
 folder_path.set("")
+# output path
+output_path = StringVar()
+output_path.set("")
 
 # folder path label
 folder_path_label = Label(root, textvariable=folder_path, bg="white", font=("Times", 12, "bold"))
@@ -278,65 +302,64 @@ width_label.place(x=10, y=100)
 width_entry = Entry(root, width=30, bg="white", font=("Times", 12, "bold"))
 width_entry.place(x=100, y=100)
 
-#sigma entry
+# sigma entry
 sigmasize_entry = Entry(root, width=10, bg="white", font=("Times", 12, "bold"))
-sigmasize_entry.place(x=360,y=260)
+sigmasize_entry.place(x=360, y=260)
 
-#sigma label
+# sigma label
 sigmasize_label = Label(root, text="Sigma", bg="white", font=("Times", 12, "bold"))
 sigmasize_label.place(x=300, y=260)
 
+# kernelsize entry
+kernelsize_entry = Entry(root, text="kernel", width=10, bg="white", font=("Times", 12, "bold"))
+kernelsize_entry.place(x=360, y=300)
 
-#kernelsize entry
-kernelsize_entry = Entry(root,text="kernel",width=10, bg="white", font=("Times", 12, "bold"))
-kernelsize_entry.place(x=360,y=300)
-
-#kernelsize label
+# kernelsize label
 kernelsize_label = Label(root, text="Kernel Size", bg="white", font=("Times", 12, "bold"))
 kernelsize_label.place(x=270, y=300)
 
-#rms entry
+# rms entry
 rms_entry = Entry(root, width=10, bg="white", font=("Times", 12, "bold"))
-rms_entry.place(x=360,y=340)
+rms_entry.place(x=360, y=340)
 
-#rms label
+# rms label
 rms_label = Label(root, text="RMS", bg="white", font=("Times", 12, "bold"))
 rms_label.place(x=300, y=340)
-#cutoff entry
+# cutoff entry
 cutoff_entry = Entry(root, width=10, bg="white", font=("Times", 12, "bold"))
-cutoff_entry.place(x=360,y=380)
-#cutoff label
+cutoff_entry.place(x=360, y=380)
+# cutoff label
 cutoff_label = Label(root, text="Cutoff", bg="white", font=("Times", 12, "bold"))
 cutoff_label.place(x=300, y=380)
-#n entry
+# n entry
 n_entry = Entry(root, width=10, bg="white", font=("Times", 12, "bold"))
-n_entry.place(x=360,y=420)
-#n label
+n_entry.place(x=360, y=420)
+# n label
 n_label = Label(root, text="N", bg="white", font=("Times", 12, "bold"))
 n_label.place(x=300, y=420)
 
-#width_SF entry
+# width_SF entry
 width_SF_entry = Entry(root, width=6, bg="white", font=("Times", 8, "italic"))
-width_SF_entry.place(x=500,y=420)
-#width_SF label
+width_SF_entry.place(x=500, y=420)
+# width_SF label
 width_SF_label = Label(root, text="Width SF", bg="white", font=("Times", 8, "italic"))
 width_SF_label.place(x=450, y=420)
-#height_SF entry
+# height_SF entry
 height_SF_entry = Entry(root, width=6, bg="white", font=("Times", 8, "italic"))
-height_SF_entry.place(x=505,y=440)
-#height_SF label
+height_SF_entry.place(x=505, y=440)
+# height_SF label
 height_SF_label = Label(root, text="Height SF", bg="white", font=("Times", 8, "italic"))
 height_SF_label.place(x=450, y=440)
-
 
 # extension entry
 extension_label = Label(root, text="extension", bg="white", font=("Times", 12, "bold"))
 extension_label.place(x=300, y=50)
 
-
 # extension entry
 extension_entry = Entry(root, width=5, bg="white", font=("Times", 12, "bold"))
 extension_entry.place(x=400, y=50)
+
+
 
 # height label
 height_label = Label(root, text="Height", bg="white", font=("Times", 12, "bold"))
@@ -373,23 +396,28 @@ clear_button.place(x=130, y=350)
 blur_button = Button(root, text="Blur", command=blur, bg="white", font=("Times", 12, "bold"))
 blur_button.place(x=370, y=200)
 
-#gray button
+# gray button
 gray_button = Button(root, text="Gray", command=gray, bg="white", font=("Times", 12, "bold"))
 gray_button.place(x=280, y=200)
 
-#lowfrequencydomain button
-lowfrequencydomain_button = Button(root, text="Low Frequency Domain", command=lowfrequencydomain, bg="white", font=("Times", 12, "bold"))
+# lowfrequencydomain button
+lowfrequencydomain_button = Button(root, text="Low Frequency Domain", command=lowfrequencydomain, bg="white",
+                                   font=("Times", 12, "bold"))
 lowfrequencydomain_button.place(x=240, y=445)
 
-#highfrequencybandfilter button
-highfrequencybandfilter_button = Button(root, text="high Frequency Band Filter", command=highfrequencybandfilter, bg="white", font=("Times", 12, "bold"))
+#change_extension button
+change_extension_button = Button(root, text="Change Extension", command=change_extension, bg="white",
+                                    font=("Times", 8, "bold"))
+change_extension_button.place(x=130, y=230)
+
+# highfrequencybandfilter button
+highfrequencybandfilter_button = Button(root, text="high Frequency Band Filter", command=highfrequencybandfilter,
+                                        bg="white", font=("Times", 12, "bold"))
 highfrequencybandfilter_button.place(x=240, y=470)
-
-
-
 
 # exit button
 exit_button = Button(root, text="Exit", command=exit, bg="white", font=("Times", 12, "bold"))
 exit_button.place(x=130, y=400)
 
 root.mainloop()
+
