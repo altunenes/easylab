@@ -185,7 +185,7 @@ def lowfrequencydomain():
                 plt.savefig(path, bbox_inches='tight', pad_inches=0,dpi=1000) #, bbox_inches='tight', pad_inches=0
                 plt.close()
 
-    messagebox.showinfo("Success", "Successfully Converted to Frequency Domain")
+    messagebox.showinfo("Success", "Successfully Converted to low Frequency Domain")
 
 # High Frequency Band Filter
 def highfrequencybandfilter():
@@ -243,7 +243,7 @@ def highfrequencybandfilter():
                 plt.savefig(path, bbox_inches='tight', pad_inches=0,dpi=1000) #, bbox_inches='tight', pad_inches=0
                 plt.close()
 
-    messagebox.showinfo("Success", "Successfully High Frequency Band Filter")
+    messagebox.showinfo("Success", "High Frequency Band Filter")
 
 
 
