@@ -32,6 +32,10 @@ for i in list_files:
     else:
         list_files_new.append(i)
 
+#remove "SHINEd_" from the image names
+for i in list_files:
+    if 'SHINEd_' in i:
+        os.rename(os.path.join(path_folder, i), os.path.join(path_folder, i.replace('SHINEd_', '')))
 #save the list as csv
 df = pd.DataFrame(list_files_new)
 df.to_csv(os.path.join(path_folder_save, 'list_files.csv'), index=False)
