@@ -92,9 +92,51 @@ jitter.querySelector('#jitterButton').addEventListener('click', function(e) {
   a.click();
 });
 document.body.appendChild(jitter);
+var buttons = document.querySelectorAll('button');
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].style.backgroundColor = '#f00';
+  buttons[i].style.color = '#fff';
+  buttons[i].style.border = 'none';
+  buttons[i].style.padding = '10px';
+  buttons[i].style.margin = '10px';
+  buttons[i].style.fontSize = '20px';
+  buttons[i].style.fontFamily = 'Arial';
+  buttons[i].style.fontWeight = 'bold';
+  buttons[i].style.borderRadius = '10px';
+  buttons[i].style.boxShadow = '0 0 10px #000';
+}
+var browseFolder = document.querySelector('input[type="file"]');
+browseFolder.style.backgroundColor = '#f00';
+browseFolder.style.color = '#fff';
+browseFolder.style.border = 'none';
+browseFolder.style.padding = '10px';
+browseFolder.style.margin = '10px';
+browseFolder.style.fontSize = '20px';
+browseFolder.style.fontFamily = 'Arial';
+browseFolder.style.fontWeight = 'bold';
+browseFolder.style.borderRadius = '10px';
+browseFolder.style.boxShadow = '0 0 10px #000';
 
+var inputs = document.querySelectorAll('input');
+for (var i = 0; i < inputs.length; i++) {
+  inputs[i].style.backgroundColor = '#f00';
+  inputs[i].style.color = 'white';
+  inputs[i].style.border = 'none';
+  inputs[i].style.padding = '10px';
+  inputs[i].style.margin = '10px';
+  inputs[i].style.fontSize = '20px';
+  inputs[i].style.fontFamily = 'Arial';
+  inputs[i].style.fontWeight = 'bold';
+  inputs[i].style.borderRadius = '10px';
+  inputs[i].style.boxShadow = '0 0 10px #000';
+}
+var buttons = document.querySelectorAll('button');
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].style.backgroundColor = '#00f';
+}
 });
         </script>
     </head>
 
 </html>
+
