@@ -128,3 +128,7 @@ for (var i = 0; i < inputs.length; i++) {
   inputs[i].style.borderRadius = '10px';
   inputs[i].style.boxShadow = '0 0 10px #000';
 }
+var buttons = document.querySelectorAll('button');
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].style.backgroundColor = '#00f';
+}
