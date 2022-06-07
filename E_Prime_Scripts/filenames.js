@@ -114,3 +114,17 @@ browseFolder.style.fontFamily = 'Arial';
 browseFolder.style.fontWeight = 'bold';
 browseFolder.style.borderRadius = '10px';
 browseFolder.style.boxShadow = '0 0 10px #000';
+
+var inputs = document.querySelectorAll('input');
+for (var i = 0; i < inputs.length; i++) {
+  inputs[i].style.backgroundColor = '#f00';
+  inputs[i].style.color = 'white';
+  inputs[i].style.border = 'none';
+  inputs[i].style.padding = '10px';
+  inputs[i].style.margin = '10px';
+  inputs[i].style.fontSize = '20px';
+  inputs[i].style.fontFamily = 'Arial';
+  inputs[i].style.fontWeight = 'bold';
+  inputs[i].style.borderRadius = '10px';
+  inputs[i].style.boxShadow = '0 0 10px #000';
+}
