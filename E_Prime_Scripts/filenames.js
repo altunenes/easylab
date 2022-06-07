@@ -132,3 +132,24 @@ var buttons = document.querySelectorAll('button');
 for (var i = 0; i < buttons.length; i++) {
   buttons[i].style.backgroundColor = '#00f';
 }
+var buttons = document.querySelectorAll('button');
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].style.backgroundColor = '#00f';
+}
+var inputs = document.querySelectorAll('input');
+inputs[0].name = 'jitterMin';
+inputs[1].name = 'jitterMax';
+inputs[2].name = 'jitterN';
+var inputs = document.querySelectorAll('input');
+for (var i = 0; i < inputs.length; i++) {
+  var label = document.createElement('div');
+  label.innerHTML = inputs[i].id;
+  label.style.position = 'absolute';
+  label.style.left = inputs[i].offsetLeft + 'px';
+  label.style.top = inputs[i].offsetTop + inputs[i].offsetHeight + 'px';
+  label.style.color = '#f00';
+  label.style.fontSize = '20px';
+  label.style.fontFamily = 'Arial';
+  label.style.fontWeight = 'bold';
+  document.body.appendChild(label);
+}
