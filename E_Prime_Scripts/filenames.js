@@ -153,3 +153,15 @@ for (var i = 0; i < inputs.length; i++) {
   label.style.fontWeight = 'bold';
   document.body.appendChild(label);
 }
+
+var twitterLink = document.createElement('a');
+twitterLink.innerHTML = '@altunenes';
+twitterLink.href = 'https://github.com/altunenes';
+twitterLink.style.position = 'absolute';
+twitterLink.style.bottom = '10px';
+twitterLink.style.right = '10px';
+twitterLink.style.fontSize = '15px';
+twitterLink.style.fontFamily = 'sans-serif';
+twitterLink.style.color = '#666';
+document.body.appendChild(twitterLink);
+document.body.style.overflow = 'auto';
