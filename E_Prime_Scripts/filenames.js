@@ -64,3 +64,26 @@ spinningAround.style.fontFamily = 'Arial';
 spinningAround.style.fontWeight = 'bold';
 spinningAround.style.textAlign = 'center';
 spinningAround.style.lineHeight = '120px';
+
+
+var jitter = document.createElement('div');
+jitter.innerHTML = '<input type="number" id="jitterMin" value="0" min="0" max="100" step="1">' +
+  '<input type="number" id="jitterMax" value="100" min="0" max="100" step="1">' +
+  '<input type="number" id="jitterN" value="10" min="0" max="100" step="1">' +
+  '<button id="jitterButton">Jitter</button>';
+jitter.querySelector('#jitterButton').addEventListener('click', function(e) {
+  var min = parseInt(jitter.querySelector('#jitterMin').value);
+  var max = parseInt(jitter.querySelector('#jitterMax').value);
+  var n = parseInt(jitter.querySelector('#jitterN').value);
+  var csv = '';
+  for (var i = 0; i < n; i++) {
+    csv += Math.floor(Math.random() * (max - min + 1)) + min + '\n';
+  }
+  var blob = new Blob([csv], {type: 'text/csv'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'export.csv';
+  a.click();
+});
+document.body.appendChild(jitter);
