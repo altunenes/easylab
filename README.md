@@ -6,6 +6,10 @@ It's easy, just select your folder where your images are stored and select exten
 # Read before the usage!
  this program replaces the original images with the desired images. Be sure to copy the original ones elsewhere.
  
+# E-prime scripts
+get the trail list wih a csv or create a jitter:
+https://altunenes.github.io/EasyLab/filenames
+
  ---------------
 
 The extension button transforms images' extensions to the desired extension.
