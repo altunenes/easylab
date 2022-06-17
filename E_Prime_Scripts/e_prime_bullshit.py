@@ -3,9 +3,9 @@
 import os
 import cv2
 
-def convert_to_bmp(path, new_path):
+def fix_bullshit(path, new_path):
     for file in os.listdir(path):
         img = cv2.imread(os.path.join(path, file))
         cv2.imwrite(os.path.join(new_path, file[:-3] + 'bmp'), img)
         
-convert_to_bmp(r'C:\Users\altunenes\Desktop\imagefolder', r'C:\Users\altunenes\Desktop\exportfolder')
+fix_bullshit(r'C:\Users\altunenes\Desktop\imagefolder', r'C:\Users\altunenes\Desktop\exportfolder')
