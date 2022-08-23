@@ -16,14 +16,14 @@ Offers simple solutions with GUI. From a folder, it can resize images, change th
 
 # installation
 + Install easylab with pip:
-```pip install EasyLab  ```
+```pip install easylab  ```
 
 # Usage
 it is very simple to use the project.
 For the open GUI, use the following command:
-```from EasyLab import EasyLab```
+```from easyLab import easyLab```
 then open the gui with:
-```EasyLab.easylab()```
+```easyLab.easylabgui()```
     
 
 It's easy, just select your folder where your images are stored and select extension and size. "Rename" button will change all images' names like this: "0image", "1image","2image"... and so on...  
