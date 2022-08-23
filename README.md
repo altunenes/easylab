@@ -23,7 +23,7 @@ it is very simple to use the project.
 For the open GUI, use the following command:
 ```from easyLab import easyLab```
 then open the gui with:
-```easyLab.easylabgui()```
+```easylab.easylabgui()```
     
 
 It's easy, just select your folder where your images are stored and select extension and size. "Rename" button will change all images' names like this: "0image", "1image","2image"... and so on...  
