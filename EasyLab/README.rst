@@ -32,7 +32,7 @@ Usage
 
 it is very simple to use the project. For the open GUI, use the
 following command: ``from EasyLab import EasyLab`` then open the gui
-with: ``EasyLab.easylab()``
+with: ``easylab.easylabgui()``
 
 | It’s easy, just select your folder where your images are stored and
   select extension and size. “Rename” button will change all images’

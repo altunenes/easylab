@@ -16,7 +16,7 @@ Offers simple solutions with GUI. From a folder, it can resize images, change th
 
 # installation
 + Install easylab with pip:
-```pip install EasyLab  ```
+```pip install easylab  ```
 
 # Usage
 it is very simple to use the project.

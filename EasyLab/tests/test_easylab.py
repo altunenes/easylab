@@ -3,7 +3,7 @@ from easylab import *
 from unittest import TestCase
 class TestEasyLab(TestCase):
     def test_version(self):
-        assert __version__ == '1.1.1'
+        assert __version__ == '1.1.3'
     def test_easylab(self):
         return
     def test_browseFiles(self):

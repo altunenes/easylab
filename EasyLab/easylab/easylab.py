@@ -408,7 +408,7 @@ exit_button = Button(root, text="Exit", command=exit, bg="white", font=("Times",
 exit_button.place(x=130, y=400)
 
 
-def easylab():
+def easylabgui():
     """
     function to open easylab
     """

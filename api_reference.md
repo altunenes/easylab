@@ -13,7 +13,7 @@ This page gives an overview of the functions.
 +[lowfrequencydomain](#lowfrequencydomain)
 +[highfrequencybandfilter](#highfrequencybandfilter)
 +[exit](#exit)
-+[easylab](#easylab)
++[easylabgui](#easylabgui)
 
 ***browseFiles***<a name="browseFiles"></a>
 browseFiles is a function that opens a file browser and lets you select a folder.
@@ -56,5 +56,5 @@ the function is based on the PsychoPy: [Psychopy](https://psychopy.org/api/filte
 ***exit***<a name="exit"></a>
 exit is a function that exits the program.
 
-***easylab***<a name="easylab"></a>
-easylab is a function that starts the easylab.
+***easylabgui***<a name="easylabgui"></a>
+easylabgui is a function that starts the easylab.
