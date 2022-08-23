@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "EasyLab"
+version = "1.1.1"
+description = "Offers simple solutions for challenges that can be encountered in the psychology labs."
+authors = ["altunenes <enesaltun2@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/altunenes/EasyLab"
+repository = "https://github.com/altunenes/EasyLab"
+keywords= ["GUI, psychology,experimental-psychology,e-prime,spatial-frequency,altunenes"]
+classifiers = [
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Psychology",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Operating System :: OS Independent",
+]
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
