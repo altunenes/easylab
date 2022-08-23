@@ -21,7 +21,7 @@ Offers simple solutions with GUI. From a folder, it can resize images, change th
 # Usage
 it is very simple to use the project.
 For the open GUI, use the following command:
-```from easyLab import easyLab```
+```from easylab import easylab```
 then open the gui with:
 ```easylab.easylabgui()```
     
