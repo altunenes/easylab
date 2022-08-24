@@ -1,6 +1,6 @@
-[![Deploy Jekyll with GitHub Pages dependencies preinstalled](https://github.com/altunenes/easylab/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/altunenes/easylab/actions/workflows/pages.yml)
+[![PyPI version](https://badge.fury.io/py/easylab.svg)](https://badge.fury.io/py/easylab)
 [![pages-build-deployment](https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment)
-
+[![Downloads](https://pepy.tech/badge/easylab)](https://pepy.tech/project/easylab)
 # EasyLab
 
 Offers simple solutions with GUI. From a folder, it can resize images, change their extensions, applies spatial frequencies, and more.
