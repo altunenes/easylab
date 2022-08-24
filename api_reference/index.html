@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://github.com/altunenes/easylab/api_reference/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>API - easylab</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "API";
+        var mkdocs_page_input_path = "api_reference.md";
+        var mkdocs_page_url = "/altunenes/easylab/api_reference/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> easylab
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../userguide/">User Guide</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">API</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filenames.html">Get Filenames JS Demo</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">easylab</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>API</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="api-reference">API REFERENCE</h3>
+<p>This page gives an overview of the functions.</p>
+<p>+<a href="#browseFiles">browseFiles</a></p>
+<p>+<a href="#outputfile">outputfile</a></p>
+<p>+<a href="#resize">resize</a></p>
+<p>+<a href="#rename">rename</a></p>
+<p>+<a href="#delete">delete</a></p>
+<p>+<a href="#clear">clear</a></p>
+<p>+<a href="#blur">blur</a></p>
+<p>+<a href="#change_extension">change_extension</a></p>
+<p>+<a href="#gray">gray</a></p>
+<p>+<a href="#lowfrequencydomain">lowfrequencydomain</a></p>
+<p>+<a href="#highfrequencybandfilter">highfrequencybandfilter</a></p>
+<p>+<a href="#exit">exit</a></p>
+<p>+<a href="#easylabgui">easylabgui</a></p>
+<p><strong><em>browseFiles</em></strong><a name="browseFiles"></a>
+browseFiles is a function that opens a file browser and lets you select a folder.</p>
+<p><strong><em>outputfile</em></strong><a name="outputfile"></a>
+outputfile is a function that opens a file browser and lets you select a folder for the exportin after processing.</p>
+<p><strong><em>resize</em></strong><a name="resize"></a>
+resize is a function that resizes all images in the folder to the desired size.</p>
+<p><strong><em>rename</em></strong><a name="rename"></a>
+rename is a function that renames all images in the folder following a pattern: 01image, 02image, 03image, ...</p>
+<p><strong><em>delete</em></strong><a name="delete"></a>
+delete is a function that deletes all images in the folder.</p>
+<p><strong><em>clear</em></strong><a name="clear"></a>
+clear the selected folder and all its contents.</p>
+<p><strong><em>blur</em></strong><a name="blur"></a>
+blur is a function that applies gaussian blur to all images in the folder with the given sigma and kernel size.</p>
+<p><strong><em>change_extension</em></strong><a name="change_extension"></a>
+change_extension is a function that changes all images' extensions to the desired extension.</p>
+<p><strong><em>gray</em></strong><a name="gray"></a>
+gray is a function that converts all images to GRAY.</p>
+<p><strong><em>lowfrequencydomain</em></strong><a name="lowfrequencydomain"></a>
+lowfrequencydomain is a function that applies low frequency filter to all images in the folder with the given cutoff frequency.
+the function is based on the PsychoPy: <a href="https://psychopy.org/api/filters.html">Psychopy</a>. You can adjust RMS, cutoff frequency, and order of the filter.</p>
+<p><strong>Warning</strong>: Matplotlib doesn't work with pixels directly, but rather physical sizes and DPI. If you want to display a figure with certain pixel size, you need to know the DPI of your monitor. I added two labels; just enter your desired dimensions (it will be multiplied with 1000; for example, if you want 800x800 pixels enter the 0.8 for both labels).</p>
+<p><strong><em>highfrequencybandfilter</em></strong><a name="highfrequencybandfilter"></a>
+highfrequencybandfilter is a function that applies high frequency filter to all images in the folder with the given cutoff frequency.
+the function is based on the PsychoPy: <a href="https://psychopy.org/api/filters.html">Psychopy</a>. You can adjust RMS, cutoff frequency, and order of the filter.</p>
+<p><strong><em>exit</em></strong><a name="exit"></a>
+exit is a function that exits the program.</p>
+<p><strong><em>easylabgui</em></strong><a name="easylabgui"></a>
+easylabgui is a function that starts the easylab.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../userguide/" class="btn btn-neutral float-left" title="User Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../filenames.html" class="btn btn-neutral float-right" title="Get Filenames JS Demo">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../userguide/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../filenames.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
