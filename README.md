@@ -53,5 +53,3 @@ Low and High Spatial filter buttons applies Butterworth class of filter with giv
 Matplotlib doesn't work with pixels directly, but rather physical sizes and DPI. If you want to display a figure with certain pixel size, you need to know the DPI of your monitor. I added two labels; just enter your desired dimensions (it will be multiplied with 1000; for example, if you want 800x800 pixels enter the 0.8 for both labels).
  
  
- 
-![image](https://user-images.githubusercontent.com/54986652/147148597-c1e1eb89-b11b-4ab6-be6c-0ff466487b88.png)
