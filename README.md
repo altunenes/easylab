@@ -1,4 +1,5 @@
 [![Deploy Jekyll with GitHub Pages dependencies preinstalled](https://github.com/altunenes/easylab/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/altunenes/easylab/actions/workflows/pages.yml)
+[![pages-build-deployment](https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment)
 
 # EasyLab
 
