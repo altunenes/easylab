@@ -1,6 +1,12 @@
+[![Deploy Jekyll with GitHub Pages dependencies preinstalled](https://github.com/altunenes/easylab/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/altunenes/easylab/actions/workflows/pages.yml)
+
 # EasyLab
 
 Offers simple solutions with GUI. From a folder, it can resize images, change their extensions, applies spatial frequencies, and more.
+
+check the following link for more details:
+
+https://altunenes.github.io/easylab/
 
 # Purpose of the project
 + The purpose of the project is to offer a simple solution to solve some of the problems that arise when working with big image datasets. 
@@ -32,14 +38,13 @@ I use this command to standardize the picture names while doing deep learning.
 # Read before the usage!
  this program replaces the original images with the desired images. Be sure to copy the original ones elsewhere.
 
-## Javascript
+# Javascript
 I will also add some javascript to online version.
 # E-prime scripts
 get the trail list (Image names for the E-Prime) or create a jitter:
 https://altunenes.github.io/EasyLab/filenames
 
  ---------------
-
 
 
 The extension button transforms images' extensions to the desired extension.
