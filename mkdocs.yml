@@ -1,0 +1,8 @@
+site_name: easylab
+site_url: https://github.com/altunenes/easylab
+nav:
+  - Home: index.md
+  - User Guide: userguide.md
+  - API: api_reference.md
+  - Get Filenames JS Demo: filenames.html
+theme: readthedocs
