@@ -42,7 +42,7 @@ I use this command to standardize the picture names while doing deep learning.
 # Javascript
 # E-prime scripts
 get the trail list (Image names for the E-Prime) or create a jitter:
-https://altunenes.github.io/EasyLab/filenames.html
+https://altunenes.github.io/easylab/filenames.html
 
  ---------------
 
