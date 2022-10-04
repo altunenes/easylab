@@ -40,10 +40,9 @@ I use this command to standardize the picture names while doing deep learning.
  this program replaces the original images with the desired images. Be sure to copy the original ones elsewhere.
 
 # Javascript
-I will also add some javascript to online version.
 # E-prime scripts
 get the trail list (Image names for the E-Prime) or create a jitter:
-https://altunenes.github.io/EasyLab/filenames
+https://altunenes.github.io/EasyLab/filenames.html
 
  ---------------
 
