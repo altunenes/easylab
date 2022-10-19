@@ -2,7 +2,8 @@ EasyLab
 =======
 
 Offers simple solutions with GUI. From a folder, it can resize images,
-change their extensions, applies spatial frequencies, and more.
+change their extensions, applies spatial frequencies, and remove
+backgrounds…
 
 Purpose of the project
 ======================
@@ -19,43 +20,55 @@ Features
 -  Change extension
 -  Apply spatial frequencies
 -  Apply Gaussian blur
--  Apply gray scale
+-  Apply gray scale filter
 -  Rename images
+-  Remove background from images
 
 installation
 ============
 
--  Install easylab with pip: ``pip install EasyLab``
+-  Install easylab with pip: ``pip install easylab``
 
 Usage
 =====
 
 it is very simple to use the project. For the open GUI, use the
 following command: ``from EasyLab import EasyLab`` then open the gui
-with: ``easylab.easylabgui()``
+with: ``EasyLab.easylab()``
 
-| It’s easy, just select your folder where your images are stored and
-  select extension and size. “Rename” button will change all images’
-  names like this: “0image”, “1image”,“2image”… and so on…
-| I use this command to standardize the picture names while doing deep
-  learning.
+It’s easy, just select the folder where your images are stored and
+select extension and size. “Rename” button will change all images’ names
+like this: “0image”, “1image”,“2image”… and so on… I use this command to
+standardize the picture names while doing deep learning.
 
 **Read before the usage!**
---------------------------
+==========================
 
 For unforeseen consequences be sure to copy the original images
 elsewhere.
 
 Javascript
-----------
+==========
 
-I will also add some javascript to online version. # E-prime scripts get
-the trail list (Image names for the E-Prime) or create a jitter:
+I will also add some javascript to online version.
+
+E-prime scripts
+===============
+
+get the trail list (Image names for the E-Prime) or create a jitter:
 https://altunenes.github.io/EasyLab/filenames
 
 Contributing
-------------
+============
 
 Contributions are welcome!
 
-##Author + Enes Altun `Main Author <https://altunenes.github.io>`__
+-  Enes Altun `Main Author <https://altunenes.github.io>`__
+
+Current look of the GUI
+=======================
+
+.. figure:: ./docs/images/easylab.PNG
+   :alt: easylab.png
+
+   easylab.png

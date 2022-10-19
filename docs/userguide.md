@@ -35,4 +35,5 @@ List of other Scripts:
 + opencv (for the filters, image processing)
 + numpy (for the mathematical operations)
 + matplotlib (for the image visualization)
++ rembg (for the background removal)
     

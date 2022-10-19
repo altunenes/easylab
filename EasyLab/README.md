@@ -1,3 +1,7 @@
+[![PyPI version](https://badge.fury.io/py/easylab.svg)](https://badge.fury.io/py/easylab)
+[![pages-build-deployment](https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment)
+[![Downloads](https://pepy.tech/badge/easylab)](https://pepy.tech/project/easylab)
+
 #### EasyLab
 
 Offers simple solutions with GUI. From a folder, it can resize images, change their extensions, applies spatial frequencies, and remove backgrounds...
@@ -26,9 +30,10 @@ Offers simple solutions with GUI. From a folder, it can resize images, change th
 
 it is very simple to use the project.
 For the open GUI, use the following command:
-```from EasyLab import EasyLab```
+```from easylab import easylab```
 then open the gui with:
-```EasyLab.easylab()```
+```easylab.easylabgui()```
+
 
 It's easy, just select the folder where your images are stored and select extension and size. "Rename" button will change all images' names like this: "0image", "1image","2image"... and so on...
 I use this command to standardize the picture names while doing deep learning.
