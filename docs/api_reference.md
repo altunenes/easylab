@@ -23,6 +23,8 @@ This page gives an overview of the functions.
 
 +[highfrequencybandfilter](#highfrequencybandfilter)
 
++[remove_background](#remove_background)
+
 +[exit](#exit)
 
 +[easylabgui](#easylabgui)
@@ -64,6 +66,9 @@ the function is based on the PsychoPy: [Psychopy](https://psychopy.org/api/filte
 ***highfrequencybandfilter***<a name="highfrequencybandfilter"></a>
 highfrequencybandfilter is a function that applies high frequency filter to all images in the folder with the given cutoff frequency.
 the function is based on the PsychoPy: [Psychopy](https://psychopy.org/api/filters.html). You can adjust RMS, cutoff frequency, and order of the filter.
+
+***remove_background***<a name="remove_background"></a>
+remove_background is a function that removes the background from all images in the folder. It is based on the rembg package: [rembg](https://github.com/danielgatis/rembg)
 
 ***exit***<a name="exit"></a>
 exit is a function that exits the program.

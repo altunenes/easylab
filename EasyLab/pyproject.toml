@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "EasyLab"
-version = "1.1.3"
+version = "1.2"
 description = "Offers simple solutions for challenges that can be encountered in the psychology labs."
 authors = ["altunenes <enesaltun2@gmail.com>"]
 license = "MIT"

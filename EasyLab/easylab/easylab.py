@@ -6,13 +6,13 @@ import cv2
 import numpy as np
 from psychopy.visual import filters
 from matplotlib import pyplot as plt
+from rembg import remove
 
 root = Tk()
 root.title("Easy Lab")
 root.geometry("600x750")
 root.configure(background="white")
 
-#show the author name before the program starts
 messagebox.showinfo("Easylab", "Please contact github/altunenes or enesaltun2@gmail.com for any questions or suggestions")
 
 
@@ -21,16 +21,13 @@ def browseFiles():
     global folder_path
     filename = filedialog.askdirectory()
     folder_path.set(filename)
-
-
+    messagebox.showinfo("Easylab", "Input folder is set to " + folder_path.get())
 # browse file to save files
-
 def outputfile():
     global output_path
     filename = filedialog.askdirectory()
     output_path.set(filename)
-
-
+    messagebox.showinfo("Easylab", "Output path is set to " + output_path.get())
 # function to resize
 def resize():
     global folder_path
@@ -48,7 +45,21 @@ def resize():
             messagebox.showinfo("Success", "Resized images saved in output folder")
         else:
             messagebox.showerror("Error", "No such file or directory")
-
+#function to remove background
+def remove_background():
+    global folder_path
+    global output_path
+    folder = folder_path.get()
+    output = output_path.get()
+    messagebox.showwarning("Warning", "Make sure that all images are in png format for best results, the process will take a long time if there are many images")
+    for filename in os.listdir(folder):
+        img = cv2.imread(os.path.join(folder, filename))
+        if img is not None:
+            result = remove(img)
+            cv2.imwrite(os.path.join(output, filename), result)
+        else:
+            messagebox.showerror("Error", "No such file or directory")
+    messagebox.showinfo("Success", "Background removed images saved in output folder")
 
 # function to rename
 def rename():
@@ -59,7 +70,6 @@ def rename():
 
     for index, file in enumerate(files):
         os.rename(os.path.join(folder, file), os.path.join(folder, 'image'.join([str(index), '.' + f'{extension}'])))
-        # os.rename(os.path.join(folder, file), os.path.join(folder, 'image'.join([str(index), '.' + f'{extension}'])))
 
     messagebox.showinfo("Success", "Successfully Renamed")
 
@@ -267,12 +277,18 @@ title = Label(root, text="Select the folder", bg="white", font=("Times", 12, "bo
 title.place(x=110, y=1)
 
 # browse button
-browse_button = Button(root, text="Browse", command=browseFiles, bg="white", font=("Times", 12, "bold"))
+browse_button = Button(root, text="input", command=browseFiles, bg="white", font=("Times", 12, "bold"))
 browse_button.place(x=130, y=20)
+
+#remove background button
+remove_background_button = Button(root, text="Remove Background", command=remove_background, bg="white",
+                                    font=("Times", 12, "bold"))
+remove_background_button.place(x=210, y=500)
+
 
 # output button
 output_button = Button(root, text="Output", command=outputfile, bg="white", font=("Times", 12, "bold"))
-output_button.place(x=130, y=60)
+output_button.place(x=130, y=80)
 # folder path
 folder_path = StringVar()
 folder_path.set("")
@@ -286,11 +302,11 @@ folder_path_label.place(x=10, y=50)
 
 # width label
 width_label = Label(root, text="Width", bg="white", font=("Times", 12, "bold"))
-width_label.place(x=10, y=100)
+width_label.place(x=10, y=130)
 
 # width entry
-width_entry = Entry(root, width=30, bg="white", font=("Times", 12, "bold"))
-width_entry.place(x=100, y=100)
+width_entry = Entry(root, width=15, bg="white", font=("Times", 12, "bold"))
+width_entry.place(x=100, y=130)
 
 # sigma entry
 sigmasize_entry = Entry(root, width=10, bg="white", font=("Times", 12, "bold"))
@@ -343,42 +359,42 @@ height_SF_label.place(x=450, y=440)
 
 # extension entry
 extension_label = Label(root, text="extension", bg="white", font=("Times", 12, "bold"))
-extension_label.place(x=300, y=50)
+extension_label.place(x=410, y=50)
 
 # extension entry
 extension_entry = Entry(root, width=5, bg="white", font=("Times", 12, "bold"))
-extension_entry.place(x=400, y=50)
+extension_entry.place(x=500, y=50)
 
 # height label
 height_label = Label(root, text="Height", bg="white", font=("Times", 12, "bold"))
-height_label.place(x=10, y=150)
+height_label.place(x=10, y=180)
 
 # height entry
-height_entry = Entry(root, width=30, bg="white", font=("Times", 12, "bold"))
-height_entry.place(x=100, y=150)
+height_entry = Entry(root, width=15, bg="white", font=("Times", 12, "bold"))
+height_entry.place(x=100, y=180)
 
 width_label = Label(root, text="Width", bg="white", font=("Times", 12, "bold"))
-width_label.place(x=10, y=100)
+width_label.place(x=10, y=130)
 
 # resize button
 resize_button = Button(root, text="Resize", command=resize, bg="white", font=("Times", 12, "bold"))
-resize_button.place(x=130, y=200)
+resize_button.place(x=50, y=250)
 
 # rename button
 rename_button = Button(root, text="Rename", command=rename, bg="white", font=("Times", 12, "bold"))
-rename_button.place(x=130, y=250)
+rename_button.place(x=50, y=300)
 
 # rename button
 extention = Button(root, text="exstention", command=rename, bg="white", font=("Times", 12, "bold"))
-rename_button.place(x=130, y=260)
+rename_button.place(x=50, y=310)
 
 # delete button
 delete_button = Button(root, text="Delete", command=delete, bg="white", font=("Times", 12, "bold"))
-delete_button.place(x=130, y=300)
+delete_button.place(x=50, y=350)
 
 # clear button
 clear_button = Button(root, text="Clear", command=clear, bg="white", font=("Times", 12, "bold"))
-clear_button.place(x=130, y=350)
+clear_button.place(x=50, y=400)
 
 # blur button
 blur_button = Button(root, text="Blur", command=blur, bg="white", font=("Times", 12, "bold"))
@@ -396,7 +412,7 @@ lowfrequencydomain_button.place(x=240, y=445)
 # change_extension button
 change_extension_button = Button(root, text="Change Extension", command=change_extension, bg="white",
                                  font=("Times", 8, "bold"))
-change_extension_button.place(x=130, y=230)
+change_extension_button.place(x=50, y=280)
 
 # highfrequencybandfilter button
 highfrequencybandfilter_button = Button(root, text="high Frequency Band Filter", command=highfrequencybandfilter,
@@ -405,7 +421,7 @@ highfrequencybandfilter_button.place(x=240, y=470)
 
 # exit button
 exit_button = Button(root, text="Exit", command=exit, bg="white", font=("Times", 12, "bold"))
-exit_button.place(x=130, y=400)
+exit_button.place(x=50, y=500)
 
 
 def easylabgui():

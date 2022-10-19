@@ -1,6 +1,6 @@
 # EasyLab
 
-Offers simple solutions with GUI. From a folder, it can resize images, change their extensions, applies spatial frequencies, and more.
+Offers simple solutions with GUI. From a folder, it can resize images, change their extensions, applies spatial frequencies, and remove backgrounds...
 
 # Purpose of the project
 + The purpose of the project is to offer a simple solution to solve some of the problems that arise when working with big image datasets. 
@@ -11,8 +11,9 @@ Offers simple solutions with GUI. From a folder, it can resize images, change th
 + Change extension
 + Apply spatial frequencies
 + Apply Gaussian blur
-+ Apply gray scale
++ Apply gray scale filter
 + Rename images
++ Remove background from images
 
 # installation
 + Install easylab with pip:
@@ -21,12 +22,12 @@ Offers simple solutions with GUI. From a folder, it can resize images, change th
 # Usage
 it is very simple to use the project.
 For the open GUI, use the following command:
-```from easylab import easylab```
+```from EasyLab import EasyLab```
 then open the gui with:
-```easyLab.easylabgui()```
+```EasyLab.easylab()```
     
 
-It's easy, just select your folder where your images are stored and select extension and size. "Rename" button will change all images' names like this: "0image", "1image","2image"... and so on...  
+It's easy, just select the folder where your images are stored and select extension and size. "Rename" button will change all images' names like this: "0image", "1image","2image"... and so on...  
 I use this command to standardize the picture names while doing deep learning.
 
 ### **Read before the usage!**
