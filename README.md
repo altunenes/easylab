@@ -59,4 +59,4 @@ Contributions are welcome!
 
 ### Current look of the GUI
 
-![easylab.png](./docs/images/easylab.PNG)
+![easylab.png](./docs/images/easylab.png)
