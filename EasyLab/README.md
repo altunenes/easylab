@@ -34,9 +34,7 @@ For the open GUI, use the following command:
 then open the gui with:
 ```easylab.easylabgui()```
 
-
-It's easy, just select the folder where your images are stored and select extension and size. "Rename" button will change all images' names like this: "0image", "1image","2image"... and so on...
-I use this command to standardize the picture names while doing deep learning.
+This basicaly starts the GUI. First, select the input folder then select the output folder. Then just select the options you want to apply to the images. Rename images will change all image names from input folder with input prefix. Don't forget to add extension if you use rename option. Be careful with this option, it will change all image names in the input folder.
 
 #### **Read before the usage!**
 

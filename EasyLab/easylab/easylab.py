@@ -249,10 +249,14 @@ def rename():
     extension = extension_entry.get()
     prefix = prefix_entry.get()
 
-    for index, file in enumerate(files):
-        os.rename(os.path.join(folder, file), os.path.join(folder, ''.join([prefix, str(index), '.' + f'{extension}'])))
+    #if extension is empty raise error and tell user to enter extension
+    if extension == "":
+        messagebox.showerror("Error", "Please enter extension, e.g jpg or png; not .jpg or .png")
+    else:
+        for index, file in enumerate(files):
+            os.rename(os.path.join(folder, file), os.path.join(folder, ''.join([prefix, str(index), '.' + f'{extension}'])))
 
-    messagebox.showinfo("Success", "Successfully Renamed")
+        messagebox.showinfo("Success", "Successfully Renamed")
 
 def histogram_equalization():
     global folder_path
