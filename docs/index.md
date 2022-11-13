@@ -1,9 +1,9 @@
 # EasyLab
 
-Offers simple solutions with GUI. From a folder, it can resize images, change their extensions, applies spatial frequencies, and remove backgrounds...
+Offers simple solutions with GUI. From a folder, it can resize images, change their extensions, applies spatial frequencies, and remove backgrounds.
 
 # Purpose of the project
-+ The purpose of the project is to offer a simple solution to solve some of the problems that arise when working with big image datasets. 
++ The purpose of the project is to offer a simple solutions to solve some of the problems that arise when working with big image datasets. 
 + The project is a work in progress, and it is not finished yet. Since it offers GUI, it is very practical to use it.
 
 # Features
@@ -14,7 +14,7 @@ Offers simple solutions with GUI. From a folder, it can resize images, change th
 + Apply grayscale filter (RGB to Gray)
 + Rename images (with a prefix)
 + Remove background from images (Utilizes deep learning, so it is slow depending on the size of the images)
-+ Apply histogram equalization 
++ Apply histogram equalization
 + Convert images to CFA (color filter array)
 
 # installation
