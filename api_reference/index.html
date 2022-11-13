@@ -83,18 +83,27 @@
               
                 <h3 id="api-reference">API REFERENCE</h3>
 <p>This page gives an overview of the functions.</p>
+<h3 id="modules-needed-to-run-the-gui">Modules needed to run the GUI</h3>
+<p>python 3.6 or higher
+psychopy
+numpy
+opencv-python
+matplotlib
+tkinter
+rembg</p>
+<h3 id="functions">Functions</h3>
 <p>+<a href="#browseFiles">browseFiles</a></p>
 <p>+<a href="#outputfile">outputfile</a></p>
 <p>+<a href="#resize">resize</a></p>
 <p>+<a href="#rename">rename</a></p>
-<p>+<a href="#delete">delete</a></p>
-<p>+<a href="#clear">clear</a></p>
 <p>+<a href="#blur">blur</a></p>
 <p>+<a href="#change_extension">change_extension</a></p>
+<p>+<a href="#Histogram-equalization">Histogram equalization</a></p>
 <p>+<a href="#gray">gray</a></p>
 <p>+<a href="#lowfrequencydomain">lowfrequencydomain</a></p>
 <p>+<a href="#highfrequencybandfilter">highfrequencybandfilter</a></p>
 <p>+<a href="#remove_background">remove_background</a></p>
+<p>+<a href="#cfa">cfa</a></p>
 <p>+<a href="#exit">exit</a></p>
 <p>+<a href="#easylabgui">easylabgui</a></p>
 <p><strong><em>browseFiles</em></strong><a name="browseFiles"></a>
@@ -104,17 +113,16 @@ outputfile is a function that opens a file browser and lets you select a folder 
 <p><strong><em>resize</em></strong><a name="resize"></a>
 resize is a function that resizes all images in the folder to the desired size.</p>
 <p><strong><em>rename</em></strong><a name="rename"></a>
-rename is a function that renames all images in the folder following a pattern: 01image, 02image, 03image, ...</p>
-<p><strong><em>delete</em></strong><a name="delete"></a>
-delete is a function that deletes all images in the folder.</p>
-<p><strong><em>clear</em></strong><a name="clear"></a>
-clear the selected folder and all its contents.</p>
+rename is a function that renames all images in the folder with desired prefix. Don't forget to add extension if you use rename option. If you starts with a number, it will be added to the end of the name. For example, if you use 1 as prefix, the image name will be 1_1.jpg, 1_2.jpg, 1_3.jpg, etc. </p>
 <p><strong><em>blur</em></strong><a name="blur"></a>
-blur is a function that applies gaussian blur to all images in the folder with the given sigma and kernel size.</p>
+blur is a function that applies gaussian blur to all images in the folder with the given sigma and kernel size.
+Sigma is the standard deviation of the gaussian kernel. Kernel size is the size of the kernel. It should be odd. For example, 3, 5, 7, etc.</p>
 <p><strong><em>change_extension</em></strong><a name="change_extension"></a>
 change_extension is a function that changes all images' extensions to the desired extension.</p>
 <p><strong><em>gray</em></strong><a name="gray"></a>
 gray is a function that converts all images to GRAY.</p>
+<p><strong><em>Histogram equalization</em></strong><a name="Histogram-equalization"></a>
+Histogram equalization is a function that applies histogram equalization to all images in the folder. It is a method in which the image is transformed so that the intensity distribution is uniform. This method is useful to improve the contrast of images, especially when the usable data of the image is represented by close contrast values. Function uses cv2.equalizeHist().</p>
 <p><strong><em>lowfrequencydomain</em></strong><a name="lowfrequencydomain"></a>
 lowfrequencydomain is a function that applies low frequency filter to all images in the folder with the given cutoff frequency.
 the function is based on the PsychoPy: <a href="https://psychopy.org/api/filters.html">Psychopy</a>. You can adjust RMS, cutoff frequency, and order of the filter.</p>
@@ -124,6 +132,8 @@ highfrequencybandfilter is a function that applies high frequency filter to all 
 the function is based on the PsychoPy: <a href="https://psychopy.org/api/filters.html">Psychopy</a>. You can adjust RMS, cutoff frequency, and order of the filter.</p>
 <p><strong><em>remove_background</em></strong><a name="remove_background"></a>
 remove_background is a function that removes the background from all images in the folder. It is based on the rembg package: <a href="https://github.com/danielgatis/rembg">rembg</a></p>
+<p><strong><em>cfa</em></strong><a name="cfa"></a>
+cfa is a function that converts all images to CFA which stands for Color Filter Array or color filter mosaic. It is a method of color filter array photography. There are 4 types of CFA.</p>
 <p><strong><em>exit</em></strong><a name="exit"></a>
 exit is a function that exits the program.</p>
 <p><strong><em>easylabgui</em></strong><a name="easylabgui"></a>

@@ -81,49 +81,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="easylab">EasyLab</h1>
+                <p><a href="https://badge.fury.io/py/easylab"><img alt="PyPI version" src="https://badge.fury.io/py/easylab.svg" /></a>
+<a href="https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment"><img alt="pages-build-deployment" src="https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment/badge.svg" /></a>
+<a href="https://pepy.tech/project/easylab"><img alt="Downloads" src="https://pepy.tech/badge/easylab" /></a></p>
+<h4 id="easylab">EasyLab</h4>
 <p>Offers simple solutions with GUI. From a folder, it can resize images, change their extensions, applies spatial frequencies, and remove backgrounds...</p>
-<h1 id="purpose-of-the-project">Purpose of the project</h1>
+<h4 id="purpose-of-the-project">Purpose of the project</h4>
 <ul>
-<li>The purpose of the project is to offer a simple solution to solve some of the problems that arise when working with big image datasets. </li>
+<li>The purpose of the project is to offer simple solutions to solve some of the problems that arise when working with big image datasets.</li>
 <li>The project is a work in progress, and it is not finished yet. Since it offers GUI, it is very practical to use it.</li>
 </ul>
-<h1 id="features">Features</h1>
+<h4 id="features">Features</h4>
 <ul>
 <li>Resize images</li>
 <li>Change extension</li>
-<li>Apply spatial frequencies</li>
+<li>Apply spatial frequencies (low pass, high pass with Butterworth filter)</li>
 <li>Apply Gaussian blur</li>
-<li>Apply gray scale filter</li>
-<li>Rename images</li>
-<li>Remove background from images</li>
+<li>Apply grayscale filter (RGB to Gray)</li>
+<li>Rename images (with a desired prefix)</li>
+<li>Remove background from images (Utilizes deep learning, so it is slow depending on the size of the images)</li>
+<li>Apply Histogram Equalization</li>
+<li>Apply CFA (Color Filter Array) filter</li>
 </ul>
-<h1 id="installation">installation</h1>
+<h4 id="installation">installation</h4>
 <ul>
 <li>Install easylab with pip:
-<code>pip install easylab</code></li>
+  <code>pip install easylab</code></li>
 </ul>
-<h1 id="usage">Usage</h1>
+<h4 id="usage">Usage</h4>
 <p>it is very simple to use the project.
 For the open GUI, use the following command:
-<code>from EasyLab import EasyLab</code>
+<code>from easylab import easylab</code>
 then open the gui with:
-<code>EasyLab.easylab()</code></p>
-<p>It's easy, just select the folder where your images are stored and select extension and size. "Rename" button will change all images' names like this: "0image", "1image","2image"... and so on...<br />
-I use this command to standardize the picture names while doing deep learning.</p>
-<h3 id="read-before-the-usage"><strong>Read before the usage!</strong></h3>
-<p>For unforeseen consequences be sure to copy the original images elsewhere.</p>
-<h2 id="javascript">Javascript</h2>
-<p>I will also add some javascript to online version.</p>
-<h1 id="e-prime-scripts">E-prime scripts</h1>
+<code>easylab.easylabgui()</code></p>
+<p>This basically starts the GUI. First, select the input folder then select the output folder. Then just select the options you want to apply to the images. Rename images will change all image names from the input folder with the input prefix. Don't forget to add an extension if you use rename option.</p>
+<h4 id="javascript">Javascript</h4>
+<p>I will also add some javascript to the online version. You can find js demos on the easylab website
+ <a href="https://altunenes.github.io/easylab/">here</a></p>
+<h4 id="e-prime-scripts">E-prime scripts</h4>
 <p>get the trail list (Image names for the E-Prime) or create a jitter:
 https://altunenes.github.io/EasyLab/filenames</p>
-<h2 id="contributing">Contributing</h2>
+<h4 id="contributing">Contributing</h4>
 <p>Contributions are welcome!</p>
-<h2 id="author">Author</h2>
 <ul>
 <li>Enes Altun <a href="https://altunenes.github.io">Main Author</a></li>
 </ul>
+<h3 id="current-look">Current look</h3>
+<p><img alt="easylab.png" src="./docs/images/easylab.png" /></p>
               
             </div>
           </div><footer>
@@ -171,5 +175,5 @@ https://altunenes.github.io/EasyLab/filenames</p>
 
 <!--
 MkDocs version : 1.3.1
-Build Date UTC : 2022-10-19 23:56:17.445602+00:00
+Build Date UTC : 2022-11-13 21:04:40.023527+00:00
 -->
