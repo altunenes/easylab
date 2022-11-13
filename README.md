@@ -15,7 +15,7 @@ Offers simple solutions with GUI. From a folder, it can resize images, change th
 
 + Resize images
 + Change extension
-+ Apply spatial frequencies (low pass, high pass with Butterworth filter)
++ Apply spatial frequencies (low pass, high pass; with Butterworth filter)
 + Apply Gaussian blur
 + Apply grayscale filter (RGB to Gray)
 + Rename images (with a desired prefix)
