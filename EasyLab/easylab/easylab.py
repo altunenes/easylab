@@ -66,6 +66,7 @@ def remove_background():
 def blur():
     global folder_path
     folder = folder_path.get()
+    output = output_path.get()
     kernelsize = int(kernelsize_entry.get())
     sigma = int(sigmasize_entry.get())
 
@@ -76,10 +77,8 @@ def blur():
                 path = os.path.join(root, file)
                 img12 = cv2.imread(path)
                 img12 = cv2.GaussianBlur(img12, (kernelsize, kernelsize), sigma)
-
-                cv2.imwrite(path, img12)
+                cv2.imwrite(os.path.join(output, file), img12)
     messagebox.showinfo("Success", "Successfully Blurred")
-
 
 def change_extension():
     global folder_path
