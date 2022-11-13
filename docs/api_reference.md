@@ -1,6 +1,17 @@
 ### API REFERENCE
 This page gives an overview of the functions.
 
+### Modules needed to run the GUI
+
+python 3.6 or higher
+psychopy
+numpy
+opencv-python
+matplotlib
+tkinter
+rembg
+
+### Functions
 +[browseFiles](#browseFiles)
 
 +[outputfile](#outputfile)
