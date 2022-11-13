@@ -34,15 +34,11 @@ For the open GUI, use the following command:
 then open the gui with:
 ```easylab.easylabgui()```
 
-This basicaly starts the GUI. First, select the input folder then select the output folder. Then just select the options you want to apply to the images. Rename images will change all image names from input folder with input prefix. Don't forget to add extension if you use rename option. Be careful with this option, it will change all image names in the input folder.
-
-#### **Read before the usage!**
-
-For unforeseen consequences be sure to copy the original images elsewhere.
+This basicaly starts the GUI. First, select the input folder then select the output folder. Then just select the options you want to apply to the images. Rename images will change all image names from input folder with input prefix. Don't forget to add extension if you use rename option.
 
 #### Javascript
 
-I will also add some javascript to online version.
+I will also add some javascript to online version. You can will finished js demos on the easylab website [here]( https://altunenes.github.io/easylab/)
 
 #### E-prime scripts
 
