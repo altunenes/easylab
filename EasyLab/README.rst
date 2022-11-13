@@ -42,16 +42,17 @@ it is very simple to use the project. For the open GUI, use the
 following command: ``from easylab import easylab`` then open the gui
 with: ``easylab.easylabgui()``
 
-This basicaly starts the GUI. First, select the input folder then select
-the output folder. Then just select the options you want to apply to the
-images. Rename images will change all image names from input folder with
-input prefix. Don’t forget to add extension if you use rename option.
+This basically starts the GUI. First, select the input folder then
+select the output folder. Then just select the options you want to apply
+to the images. Rename images will change all image names from the input
+folder with the input prefix. Don’t forget to add an extension if you
+use rename option.
 
 Javascript
 ==========
 
-I will also add some javascript to online version. You can will finished
-js demos on the easylab website
+I will also add some javascript to the online version. You can find js
+demos on the easylab website
 `here <https://altunenes.github.io/easylab/>`__
 
 E-prime scripts
@@ -67,10 +68,10 @@ Contributions are welcome!
 
 -  Enes Altun `Main Author <https://altunenes.github.io>`__
 
-Current look of the GUI
-=======================
+Current look
+============
 
-.. figure:: ./docs/images/easylab.PNG
+.. figure:: ./docs/images/easylab.png
    :alt: easylab.png
 
    easylab.png
