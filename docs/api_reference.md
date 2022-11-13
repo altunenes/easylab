@@ -39,10 +39,11 @@ outputfile is a function that opens a file browser and lets you select a folder 
 resize is a function that resizes all images in the folder to the desired size.
 
 ***rename***<a name="rename"></a>
-rename is a function that renames all images in the folder with desired prefix.
+rename is a function that renames all images in the folder with desired prefix. Don't forget to add extension if you use rename option. If you starts with a number, it will be added to the end of the name. For example, if you use 1 as prefix, the image name will be 1_1.jpg, 1_2.jpg, 1_3.jpg, etc. 
 
 ***blur***<a name="blur"></a>
 blur is a function that applies gaussian blur to all images in the folder with the given sigma and kernel size.
+Sigma is the standard deviation of the gaussian kernel. Kernel size is the size of the kernel. It should be odd. For example, 3, 5, 7, etc.
 
 ***change_extension***<a name="change_extension"></a>
 change_extension is a function that changes all images' extensions to the desired extension.
