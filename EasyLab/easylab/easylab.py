@@ -537,3 +537,9 @@ darkmode_button.grid(row=1, column=7, padx=10, pady=10)
 
 lightmode_button = Button(root, text="Light Mode", command=lightmode)
 lightmode_button.grid(row=2, column=7, padx=10, pady=10)
+
+def easylabgui():
+    """
+    function to open easylab
+    """
+    root.mainloop()
