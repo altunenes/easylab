@@ -2,18 +2,21 @@ import os
 from tkinter import *
 from tkinter import filedialog
 from tkinter import messagebox
+from tkinter import ttk
 import cv2
 import numpy as np
 from psychopy.visual import filters
 from matplotlib import pyplot as plt
 from rembg import remove
+from ttkthemes import ThemedTk
 
 root = Tk()
 root.title("Easy Lab")
 root.geometry("600x750")
-root.configure(background="white")
-
+root.configure(background='white')
 messagebox.showinfo("Easylab", "Please contact github/altunenes or enesaltun2@gmail.com for any questions or suggestions")
+#add dark mode and light mode buttons
+
 
 
 # function to browse files
@@ -60,19 +63,6 @@ def remove_background():
         else:
             messagebox.showerror("Error", "No such file or directory")
     messagebox.showinfo("Success", "Background removed images saved in output folder")
-
-# function to rename
-def rename():
-    global folder_path
-    folder = folder_path.get()
-    files = os.listdir(folder)
-    extension = extension_entry.get()
-
-    for index, file in enumerate(files):
-        os.rename(os.path.join(folder, file), os.path.join(folder, 'image'.join([str(index), '.' + f'{extension}'])))
-
-    messagebox.showinfo("Success", "Successfully Renamed")
-
 
 # function to delete
 def delete():
@@ -146,6 +136,8 @@ def gray():
 def lowfrequencydomain():
     global folder_path
     folder = folder_path.get()
+    output = output_path.get()
+
     rms = float(rms_entry.get())
     cutoff = float(cutoff_entry.get())
     n = int(n_entry.get())
@@ -193,7 +185,7 @@ def lowfrequencydomain():
 
                 # there may be some stray values outside of the presentable range; convert < -1
                 # to -1 and > 1 to 1
-                plt.figure(figsize=(width_SF, height_SF), dpi=100)
+                plt.figure(figsize=(width_SF, height_SF), dpi=1000)
 
                 img_new = np.clip(img_new, a_min=-1.0, a_max=1.0)
 
@@ -203,8 +195,8 @@ def lowfrequencydomain():
                 plt.axis("off")
                 plt.rcParams['figure.facecolor'] = 'gray'
                 plt.axis('tight')
-                # save figures with different names
-                plt.savefig(path, bbox_inches='tight', pad_inches=0, dpi=1000)  # , bbox_inches='tight', pad_inches=0
+                # save figures  to output folder
+                plt.savefig(os.path.join(output, file), bbox_inches='tight', pad_inches=0,dpi=1000)
                 plt.close()
 
     messagebox.showinfo("Success", "Successfully Converted to Frequency Domain")
@@ -214,6 +206,7 @@ def lowfrequencydomain():
 def highfrequencybandfilter():
     global folder_path
     folder = folder_path.get()
+    output = output_path.get()
     rms = float(rms_entry.get())
     cutoff = float(cutoff_entry.get())
     n = int(n_entry.get())
@@ -252,7 +245,7 @@ def highfrequencybandfilter():
                 img_new = img_new - np.mean(img_new)
                 img_new = img_new / np.std(img_new)
                 img_new = img_new * rms
-                plt.figure(figsize=(width_SF, height_SF), dpi=100)
+                plt.figure(figsize=(width_SF, height_SF), dpi=1000)
 
                 img_new = np.clip(img_new, a_min=-1.0, a_max=1.0)
                 plt.imshow(img_new, cmap='gray')
@@ -260,11 +253,23 @@ def highfrequencybandfilter():
                 plt.axis("off")
                 plt.rcParams['figure.facecolor'] = 'gray'
                 plt.axis('tight')
-                # save figures with different names
-                plt.savefig(path, bbox_inches='tight', pad_inches=0, dpi=1000)  # , bbox_inches='tight', pad_inches=0
+                plt.savefig(os.path.join(output, file), bbox_inches='tight', pad_inches=0,dpi=1000)
                 plt.close()
 
     messagebox.showinfo("Success", "Successfully High Frequency Band Filter")
+
+def rename():
+    global folder_path
+    folder = folder_path.get()
+    files = os.listdir(folder)
+    extension = extension_entry.get()
+    prefix = prefix_entry.get()
+
+    for index, file in enumerate(files):
+        os.rename(os.path.join(folder, file), os.path.join(folder, ''.join([prefix, str(index), '.' + f'{extension}'])))
+
+    messagebox.showinfo("Success", "Successfully Renamed")
+
 
 
 # function to exit
@@ -272,156 +277,200 @@ def exit():
     root.destroy()
 
 
-# title
-title = Label(root, text="Select the folder", bg="white", font=("Times", 12, "bold"))
-title.place(x=110, y=1)
-
-# browse button
-browse_button = Button(root, text="input", command=browseFiles, bg="white", font=("Times", 12, "bold"))
-browse_button.place(x=130, y=20)
-
-#remove background button
-remove_background_button = Button(root, text="Remove Background", command=remove_background, bg="white",
-                                    font=("Times", 12, "bold"))
-remove_background_button.place(x=210, y=500)
-
-
-# output button
-output_button = Button(root, text="Output", command=outputfile, bg="white", font=("Times", 12, "bold"))
-output_button.place(x=130, y=80)
-# folder path
 folder_path = StringVar()
-folder_path.set("")
-# output path
 output_path = StringVar()
-output_path.set("")
 
-# folder path label
-folder_path_label = Label(root, textvariable=folder_path, bg="white", font=("Times", 12, "bold"))
-folder_path_label.place(x=10, y=50)
+browsebutton = Button(root, text="Browse", command=browseFiles)
+browsebutton.grid(row=0, column=2, padx=10, pady=10)
 
-# width label
-width_label = Label(root, text="Width", bg="white", font=("Times", 12, "bold"))
-width_label.place(x=10, y=130)
+browsebutton2 = Button(root, text="Browse", command=outputfile)
+browsebutton2.grid(row=1, column=2, padx=10, pady=10)
 
-# width entry
-width_entry = Entry(root, width=15, bg="white", font=("Times", 12, "bold"))
-width_entry.place(x=100, y=130)
+resizebutton = Button(root, text="Resize", command=resize)
+resizebutton.grid(row=2, column=2, padx=10, pady=10)
 
-# sigma entry
-sigmasize_entry = Entry(root, width=10, bg="white", font=("Times", 12, "bold"))
-sigmasize_entry.place(x=360, y=260)
+removebutton = Button(root, text="Remove Background", command=remove_background)
+removebutton.grid(row=3, column=2, padx=10, pady=10)
 
-# sigma label
-sigmasize_label = Label(root, text="Sigma", bg="white", font=("Times", 12, "bold"))
-sigmasize_label.place(x=300, y=260)
+renamebutton = Button(root, text="Rename", command=rename)
+renamebutton.grid(row=4, column=2, padx=10, pady=10)
 
-# kernelsize entry
-kernelsize_entry = Entry(root, text="kernel", width=10, bg="white", font=("Times", 12, "bold"))
-kernelsize_entry.place(x=360, y=300)
+deletebutton = Button(root, text="Delete", command=delete)
+deletebutton.grid(row=5, column=2, padx=10, pady=10)
 
-# kernelsize label
-kernelsize_label = Label(root, text="Kernel Size", bg="white", font=("Times", 12, "bold"))
-kernelsize_label.place(x=270, y=300)
+clearbutton = Button(root, text="Clear", command=clear)
+clearbutton.grid(row=6, column=2, padx=10, pady=10)
 
-# rms entry
-rms_entry = Entry(root, width=10, bg="white", font=("Times", 12, "bold"))
-rms_entry.place(x=360, y=340)
+blurbutton = Button(root, text="Blur", command=blur)
+blurbutton.grid(row=7, column=2, padx=10, pady=10)
 
-# rms label
-rms_label = Label(root, text="RMS", bg="white", font=("Times", 12, "bold"))
-rms_label.place(x=300, y=340)
-# cutoff entry
-cutoff_entry = Entry(root, width=10, bg="white", font=("Times", 12, "bold"))
-cutoff_entry.place(x=360, y=380)
-# cutoff label
-cutoff_label = Label(root, text="Cutoff", bg="white", font=("Times", 12, "bold"))
-cutoff_label.place(x=300, y=380)
-# n entry
-n_entry = Entry(root, width=10, bg="white", font=("Times", 12, "bold"))
-n_entry.place(x=360, y=420)
-# n label
-n_label = Label(root, text="N", bg="white", font=("Times", 12, "bold"))
-n_label.place(x=300, y=420)
+changeextensionbutton = Button(root, text="Change Extension", command=change_extension)
+changeextensionbutton.grid(row=8, column=2, padx=10, pady=10)
 
-# width_SF entry
-width_SF_entry = Entry(root, width=6, bg="white", font=("Times", 8, "italic"))
-width_SF_entry.place(x=500, y=420)
-# width_SF label
-width_SF_label = Label(root, text="Width SF", bg="white", font=("Times", 8, "italic"))
-width_SF_label.place(x=450, y=420)
-# height_SF entry
-height_SF_entry = Entry(root, width=6, bg="white", font=("Times", 8, "italic"))
-height_SF_entry.place(x=505, y=440)
-# height_SF label
-height_SF_label = Label(root, text="Height SF", bg="white", font=("Times", 8, "italic"))
-height_SF_label.place(x=450, y=440)
+graybutton = Button(root, text="Gray", command=gray)
+graybutton.grid(row=9, column=2, padx=10, pady=10)
 
-# extension entry
-extension_label = Label(root, text="extension", bg="white", font=("Times", 12, "bold"))
-extension_label.place(x=410, y=50)
+lowfrequencydomainbutton = Button(root, text="Low Frequency Domain", command=lowfrequencydomain)
+lowfrequencydomainbutton.grid(row=10, column=2, padx=10, pady=10)
 
-# extension entry
-extension_entry = Entry(root, width=5, bg="white", font=("Times", 12, "bold"))
-extension_entry.place(x=500, y=50)
+highfrequencybandfilterbutton = Button(root, text="High Frequency Band Filter", command=highfrequencybandfilter)
+highfrequencybandfilterbutton.grid(row=11, column=2, padx=10, pady=10)
 
-# height label
-height_label = Label(root, text="Height", bg="white", font=("Times", 12, "bold"))
-height_label.place(x=10, y=180)
+exitbutton = Button(root, text="Exit", command=exit)
+exitbutton.grid(row=12, column=2, padx=10, pady=10)
 
-# height entry
-height_entry = Entry(root, width=15, bg="white", font=("Times", 12, "bold"))
-height_entry.place(x=100, y=180)
+folder_label = Label(root, text="Input Folder")
+folder_label.grid(row=0, column=0, padx=10, pady=10)
 
-width_label = Label(root, text="Width", bg="white", font=("Times", 12, "bold"))
-width_label.place(x=10, y=130)
+folder_entry = Entry(root, textvariable=folder_path)
+folder_entry.grid(row=0, column=1, padx=10, pady=10)
 
-# resize button
-resize_button = Button(root, text="Resize", command=resize, bg="white", font=("Times", 12, "bold"))
-resize_button.place(x=50, y=250)
+output_label = Label(root, text="Output Folder")
+output_label.grid(row=1, column=0, padx=10, pady=10)
 
-# rename button
-rename_button = Button(root, text="Rename", command=rename, bg="white", font=("Times", 12, "bold"))
-rename_button.place(x=50, y=300)
+output_entry = Entry(root, textvariable=output_path)
+output_entry.grid(row=1, column=1, padx=10, pady=10)
 
-# rename button
-extention = Button(root, text="exstention", command=rename, bg="white", font=("Times", 12, "bold"))
-rename_button.place(x=50, y=310)
+width_label = Label(root, text="Width")
+width_label.grid(row=2, column=0, padx=10, pady=10)
 
-# delete button
-delete_button = Button(root, text="Delete", command=delete, bg="white", font=("Times", 12, "bold"))
-delete_button.place(x=50, y=350)
+width_entry = Entry(root)
+width_entry.grid(row=2, column=1, padx=10, pady=10)
 
-# clear button
-clear_button = Button(root, text="Clear", command=clear, bg="white", font=("Times", 12, "bold"))
-clear_button.place(x=50, y=400)
+height_label = Label(root, text="Height")
+height_label.grid(row=3, column=0, padx=10, pady=10)
 
-# blur button
-blur_button = Button(root, text="Blur", command=blur, bg="white", font=("Times", 12, "bold"))
-blur_button.place(x=370, y=200)
+height_entry = Entry(root)
+height_entry.grid(row=3, column=1, padx=10, pady=10)
 
-# gray button
-gray_button = Button(root, text="Gray", command=gray, bg="white", font=("Times", 12, "bold"))
-gray_button.place(x=280, y=200)
+extension_label = Label(root, text="Extension")
+extension_label.grid(row=4, column=0, padx=10, pady=10)
 
-# lowfrequencydomain button
-lowfrequencydomain_button = Button(root, text="Low Frequency Domain", command=lowfrequencydomain, bg="white",
-                                   font=("Times", 12, "bold"))
-lowfrequencydomain_button.place(x=240, y=445)
+extension_entry = Entry(root)
+extension_entry.grid(row=4, column=1, padx=10, pady=10)
 
-# change_extension button
-change_extension_button = Button(root, text="Change Extension", command=change_extension, bg="white",
-                                 font=("Times", 8, "bold"))
-change_extension_button.place(x=50, y=280)
+kernelsize_label = Label(root, text="Kernel Size")
+kernelsize_label.grid(row=5, column=0, padx=10, pady=10)
 
-# highfrequencybandfilter button
-highfrequencybandfilter_button = Button(root, text="high Frequency Band Filter", command=highfrequencybandfilter,
-                                        bg="white", font=("Times", 12, "bold"))
-highfrequencybandfilter_button.place(x=240, y=470)
+kernelsize_entry = Entry(root)
+kernelsize_entry.grid(row=5, column=1, padx=10, pady=10)
 
-# exit button
-exit_button = Button(root, text="Exit", command=exit, bg="white", font=("Times", 12, "bold"))
-exit_button.place(x=50, y=500)
+sigmasize_label = Label(root, text="Sigma Size")
+sigmasize_label.grid(row=6, column=0, padx=10, pady=10)
+
+sigmasize_entry = Entry(root)
+sigmasize_entry.grid(row=6, column=1, padx=10, pady=10)
+
+rms_label = Label(root, text="RMS")
+rms_label.grid(row=7, column=0, padx=10, pady=10)
+
+rms_entry = Entry(root)
+rms_entry.grid(row=7, column=1, padx=10, pady=10)
+
+cutoff_label = Label(root, text="Cutoff")
+cutoff_label.grid(row=8, column=0, padx=10, pady=10)
+
+cutoff_entry = Entry(root)
+cutoff_entry.grid(row=8, column=1, padx=10, pady=10)
+
+n_label = Label(root, text="N")
+n_label.grid(row=9, column=0, padx=10, pady=10)
+
+n_entry = Entry(root)
+n_entry.grid(row=9, column=1, padx=10, pady=10)
+
+width_SF_label = Label(root, text="Width SF")
+width_SF_label.grid(row=10, column=0, padx=10, pady=10)
+
+width_SF_entry = Entry(root)
+width_SF_entry.grid(row=10, column=1, padx=10, pady=10)
+
+height_SF_label = Label(root, text="Height SF")
+height_SF_label.grid(row=11, column=0, padx=10, pady=10)
+
+height_SF_entry = Entry(root)
+height_SF_entry.grid(row=11, column=1, padx=10, pady=10)
+
+#add rename prefix label
+rename_prefix_label = Label(root, text="Rename Prefix")
+rename_prefix_label.grid(row=12, column=0, padx=10, pady=10)
+
+#add rename prefix entry
+rename_prefix_entry = Entry(root)
+rename_prefix_entry.grid(row=12, column=1, padx=10, pady=10)
+
+
+
+def info():
+    messagebox.showinfo("Easylab", "RMS (Contrast), Cutoff and N (order of the Butterworth) for the spatial frequency. Width SF and Height SF is about the dpi of the screen. it will be multiplied with 1000; for example, if you want 800x800 pixels enter the 0.8 for both labels")
+
+info_button = Button(root, text="Info", command=info)
+info_button.grid(row=12, column=0, padx=10, pady=10)
+
+
+def darkmode():
+    root.configure(background="black")
+    folder_label.configure(background="black", foreground="gray")
+    output_label.configure(background="black", foreground="gray")
+    width_label.configure(background="black", foreground="gray")
+    height_label.configure(background="black", foreground="gray")
+    extension_label.configure(background="black", foreground="gray")
+    kernelsize_label.configure(background="black", foreground="gray")
+    sigmasize_label.configure(background="black", foreground="gray")
+    rms_label.configure(background="black", foreground="gray")
+    cutoff_label.configure(background="black", foreground="gray")
+    n_label.configure(background="black", foreground="gray")
+    width_SF_label.configure(background="black", foreground="gray")
+    height_SF_label.configure(background="black", foreground="gray")
+    info_button.configure(background="black", foreground="gray")
+    exitbutton.configure(background="black", foreground="gray")
+    browsebutton.configure(background="black", foreground="gray")
+    browsebutton2.configure(background="black", foreground="gray")
+    resizebutton.configure(background="black", foreground="gray")
+    removebutton.configure(background="black", foreground="gray")
+    renamebutton.configure(background="black", foreground="gray")
+    deletebutton.configure(background="black", foreground="gray")
+    clearbutton.configure(background="black", foreground="gray")
+    blurbutton.configure(background="black", foreground="gray")
+    changeextensionbutton.configure(background="black", foreground="gray")
+    graybutton.configure(background="black", foreground="gray")
+    lowfrequencydomainbutton.configure(background="black", foreground="gray")
+    highfrequencybandfilterbutton.configure(background="black", foreground="gray")
+
+def lightmode():
+    root.configure(background="white")
+    folder_label.configure(background="white", foreground="black")
+    output_label.configure(background="white", foreground="black")
+    width_label.configure(background="white", foreground="black")
+    height_label.configure(background="white", foreground="black")
+    extension_label.configure(background="white", foreground="black")
+    kernelsize_label.configure(background="white", foreground="black")
+    sigmasize_label.configure(background="white", foreground="black")
+    rms_label.configure(background="white", foreground="black")
+    cutoff_label.configure(background="white", foreground="black")
+    n_label.configure(background="white", foreground="black")
+    width_SF_label.configure(background="white", foreground="black")
+    height_SF_label.configure(background="white", foreground="black")
+    info_button.configure(background="white", foreground="black")
+    exitbutton.configure(background="white", foreground="black")
+    browsebutton.configure(background="white", foreground="black")
+    browsebutton2.configure(background="white", foreground="black")
+    resizebutton.configure(background="white", foreground="black")
+    removebutton.configure(background="white", foreground="black")
+    renamebutton.configure(background="white", foreground="black")
+    deletebutton.configure(background="white", foreground="black")
+    clearbutton.configure(background="white", foreground="black")
+    blurbutton.configure(background="white", foreground="black")
+    changeextensionbutton.configure(background="white", foreground="black")
+    graybutton.configure(background="white", foreground="black")
+    lowfrequencydomainbutton.configure(background="white", foreground="black")
+    highfrequencybandfilterbutton.configure(background="white", foreground="black")
+
+darkmode_button = Button(root, text="Dark Mode", command=darkmode)
+darkmode_button.grid(row=12, column=1, padx=10, pady=10)
+
+lightmode_button = Button(root, text="Light Mode", command=lightmode)
+lightmode_button.grid(row=13, column=1, padx=10, pady=10)
 
 
 def easylabgui():

@@ -1,3 +1,5 @@
+|PyPI version| |pages-build-deployment| |Downloads|
+
 EasyLab
 =======
 
@@ -33,8 +35,8 @@ Usage
 =====
 
 it is very simple to use the project. For the open GUI, use the
-following command: ``from EasyLab import EasyLab`` then open the gui
-with: ``EasyLab.easylab()``
+following command: ``from easylab import easylab`` then open the gui
+with: ``easylab.easylabgui()``
 
 It’s easy, just select the folder where your images are stored and
 select extension and size. “Rename” button will change all images’ names
@@ -72,3 +74,10 @@ Current look of the GUI
    :alt: easylab.png
 
    easylab.png
+
+.. |PyPI version| image:: https://badge.fury.io/py/easylab.svg
+   :target: https://badge.fury.io/py/easylab
+.. |pages-build-deployment| image:: https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment/badge.svg
+   :target: https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment
+.. |Downloads| image:: https://pepy.tech/badge/easylab
+   :target: https://pepy.tech/project/easylab
