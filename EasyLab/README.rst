@@ -10,7 +10,7 @@ backgrounds…
 Purpose of the project
 ======================
 
--  The purpose of the project is to offer a simple solution to solve
+-  The purpose of the project is to offer a simple solutions to solve
    some of the problems that arise when working with big image datasets.
 -  The project is a work in progress, and it is not finished yet. Since
    it offers GUI, it is very practical to use it.
@@ -20,11 +20,15 @@ Features
 
 -  Resize images
 -  Change extension
--  Apply spatial frequencies
+-  Apply spatial frequencies (low pass, high pass with Butterworth
+   filter)
 -  Apply Gaussian blur
--  Apply gray scale filter
--  Rename images
--  Remove background from images
+-  Apply grayscale filter (RGB to Gray)
+-  Rename images (with a desired prefix)
+-  Remove background from images (Utilizes deep learning, so it is slow
+   depending on the size of the images)
+-  Apply Histogram Equalization
+-  Apply CFA (Color Filter Array) filter
 
 installation
 ============
@@ -38,21 +42,17 @@ it is very simple to use the project. For the open GUI, use the
 following command: ``from easylab import easylab`` then open the gui
 with: ``easylab.easylabgui()``
 
-It’s easy, just select the folder where your images are stored and
-select extension and size. “Rename” button will change all images’ names
-like this: “0image”, “1image”,“2image”… and so on… I use this command to
-standardize the picture names while doing deep learning.
-
-**Read before the usage!**
-==========================
-
-For unforeseen consequences be sure to copy the original images
-elsewhere.
+This basicaly starts the GUI. First, select the input folder then select
+the output folder. Then just select the options you want to apply to the
+images. Rename images will change all image names from input folder with
+input prefix. Don’t forget to add extension if you use rename option.
 
 Javascript
 ==========
 
-I will also add some javascript to online version.
+I will also add some javascript to online version. You can will finished
+js demos on the easylab website
+`here <https://altunenes.github.io/easylab/>`__
 
 E-prime scripts
 ===============
