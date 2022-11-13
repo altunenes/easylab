@@ -15,7 +15,6 @@ root.title("Easy Lab")
 root.geometry("600x750")
 root.configure(background='white')
 messagebox.showinfo("Easylab", "Please contact github/altunenes or enesaltun2@gmail.com for any questions or suggestions")
-#add dark mode and light mode buttons
 
 
 
@@ -63,26 +62,6 @@ def remove_background():
         else:
             messagebox.showerror("Error", "No such file or directory")
     messagebox.showinfo("Success", "Background removed images saved in output folder")
-
-# function to delete
-def delete():
-    global folder_path
-    folder = folder_path.get()
-    for root, dirs, files in os.walk(folder):
-        for file in files:
-            if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg") or file.endswith(
-                    ".BMP") or file.endswith(".tif"):
-                path = os.path.join(root, file)
-                os.remove(path)
-    messagebox.showinfo("Success", "Successfully Deleted")
-
-
-# function to clear
-def clear():
-    folder_path.set("")
-    width_entry.delete(0, END)
-    height_entry.delete(0, END)
-
 
 def blur():
     global folder_path
@@ -295,12 +274,6 @@ removebutton.grid(row=3, column=2, padx=10, pady=10)
 renamebutton = Button(root, text="Rename", command=rename)
 renamebutton.grid(row=4, column=2, padx=10, pady=10)
 
-deletebutton = Button(root, text="Delete", command=delete)
-deletebutton.grid(row=5, column=2, padx=10, pady=10)
-
-clearbutton = Button(root, text="Clear", command=clear)
-clearbutton.grid(row=6, column=2, padx=10, pady=10)
-
 blurbutton = Button(root, text="Blur", command=blur)
 blurbutton.grid(row=7, column=2, padx=10, pady=10)
 
@@ -391,11 +364,9 @@ height_SF_label.grid(row=11, column=0, padx=10, pady=10)
 height_SF_entry = Entry(root)
 height_SF_entry.grid(row=11, column=1, padx=10, pady=10)
 
-#add rename prefix label
 rename_prefix_label = Label(root, text="Rename Prefix")
 rename_prefix_label.grid(row=12, column=0, padx=10, pady=10)
 
-#add rename prefix entry
 rename_prefix_entry = Entry(root)
 rename_prefix_entry.grid(row=12, column=1, padx=10, pady=10)
 
@@ -429,8 +400,6 @@ def darkmode():
     resizebutton.configure(background="black", foreground="gray")
     removebutton.configure(background="black", foreground="gray")
     renamebutton.configure(background="black", foreground="gray")
-    deletebutton.configure(background="black", foreground="gray")
-    clearbutton.configure(background="black", foreground="gray")
     blurbutton.configure(background="black", foreground="gray")
     changeextensionbutton.configure(background="black", foreground="gray")
     graybutton.configure(background="black", foreground="gray")
@@ -458,8 +427,6 @@ def lightmode():
     resizebutton.configure(background="white", foreground="black")
     removebutton.configure(background="white", foreground="black")
     renamebutton.configure(background="white", foreground="black")
-    deletebutton.configure(background="white", foreground="black")
-    clearbutton.configure(background="white", foreground="black")
     blurbutton.configure(background="white", foreground="black")
     changeextensionbutton.configure(background="white", foreground="black")
     graybutton.configure(background="white", foreground="black")
