@@ -99,6 +99,7 @@ def change_extension():
 def gray():
     global folder_path
     folder = folder_path.get()
+    output = output_path.get()
     for root, dirs, files in os.walk(folder):
         for file in files:
             if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg") or file.endswith(
@@ -106,7 +107,7 @@ def gray():
                 path = os.path.join(root, file)
                 img = cv2.imread(path)
                 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-                cv2.imwrite(path, img)
+                cv2.imwrite(os.path.join(output, file), img)
     messagebox.showinfo("Success", "Successfully Converted to Gray")
 
 
