@@ -508,8 +508,6 @@ def darkmode():
     cfa_button.configure(background="black", foreground="gray")
 
 
-
-
 def lightmode():
     root.configure(background="white")
     folder_label.configure(background="white", foreground="black")
