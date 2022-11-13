@@ -41,7 +41,7 @@ This basically starts the GUI. First, select the input folder then select the ou
 #### Javascript
 
 I will also add some javascript to the online version. You can find js demos on the easylab website
- [here]( https://altunenes.github.io/easylab/)
+[here]( https://altunenes.github.io/easylab/)
 
 #### E-prime scripts
 
