@@ -13,7 +13,7 @@ import numpy as np
 from psychopy.visual import filters
 from matplotlib import pyplot as plt
 from rembg import remove
-from ttkthemes import ThemedTk
+# from ttkthemes import ThemedTk
 
 root = Tk()
 root.title("Easy Lab")
