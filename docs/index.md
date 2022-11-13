@@ -18,8 +18,10 @@ Offers simple solutions with GUI. From a folder, it can resize images, change th
 + Apply spatial frequencies (low pass, high pass with Butterworth filter)
 + Apply Gaussian blur
 + Apply grayscale filter (RGB to Gray)
-+ Rename images (with a prefix)
++ Rename images (with a desired prefix)
 + Remove background from images (Utilizes deep learning, so it is slow depending on the size of the images)
++ Apply Histogram Equalization
++ Apply CFA (Color Filter Array) filter
 
 #### installation
 
