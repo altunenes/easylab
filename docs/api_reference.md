@@ -23,6 +23,8 @@ This page gives an overview of the functions.
 
 +[remove_background](#remove_background)
 
++[cfa](#cfa)
+
 +[exit](#exit)
 
 +[easylabgui](#easylabgui)
@@ -64,6 +66,9 @@ the function is based on the PsychoPy: [Psychopy](https://psychopy.org/api/filte
 
 ***remove_background***<a name="remove_background"></a>
 remove_background is a function that removes the background from all images in the folder. It is based on the rembg package: [rembg](https://github.com/danielgatis/rembg)
+
+***cfa***<a name="cfa"></a>
+cfa is a function that converts all images to CFA which stands for Color Filter Array or color filter mosaic. It is a method of color filter array photography. There are 4 types of CFA.
 
 ***exit***<a name="exit"></a>
 exit is a function that exits the program.

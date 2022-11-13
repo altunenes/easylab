@@ -264,6 +264,76 @@ def histogram_equalization():
                 cv2.imwrite(os.path.join(output, file), img)
     messagebox.showinfo("Success", "Successfully Histogram Equalized")
 
+def cfa():
+    global folder_path
+    folder = folder_path.get()
+    output = output_path.get()
+    for root, dirs, files in os.walk(folder):
+        for file in files:
+            if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg") or file.endswith(
+                    ".bmp") or file.endswith(".tif"):
+                path = os.path.join(root, file)
+                img = cv2.imread(path)
+                (B,G,R) = cv2.split(img)
+                (height, width) = img.shape[:2]
+                cfa0 = np.empty((height, width), np.uint8)
+                cfa1 = np.empty((height, width), np.uint8)
+                cfa2 = np.empty((height, width), np.uint8)
+                cfa3 = np.empty((height, width), np.uint8)
+
+                cfa0[0::2, 0::2] = G[0::2, 0::2]
+                cfa0[0::2, 1::2] = R[0::2, 1::2] 
+                cfa0[1::2, 0::2] = B[1::2, 0::2] 
+                cfa0[1::2, 1::2] = G[1::2, 1::2]
+
+                cfa1[::, 0::2] = G[::, 0::2]
+                cfa1[::2, 1::4] = R[::2, 1::4]  
+                cfa1[1::2, 1::4] = B[1::2, 1::4]   
+                cfa1[1::2, 3::4] = R[1::2, 3::4]  
+                cfa1[::2, 3::4] = B[::2, 3::4] 
+
+                cfa2[::4, 0::2] = G[::4, 0::2]
+                cfa2[1::4, 0::2] = G[1::4, 0::2]
+                cfa2[::4, 1::2] = R[::4, 1::2] 
+                cfa2[1::4, 1::2] = B[1::4, 1::2]
+                cfa2[2::4, 1::2] = G[2::4, 1::2]
+                cfa2[3::4, 1::2] = G[3::4, 1::2]
+                cfa2[2::4, 0::2] = R[2::4, 0::2] 
+                cfa2[3::4, 0::2] = B[3::4, 0::2] 
+
+                cfa3[::, 0::3] = G[::, 0::3] 
+                cfa3[::, 1::3] = R[::, 1::3] 
+                cfa3[::, 2::3] = B[::, 2::3] 
+                cfa0 = cv2.cvtColor(cfa0, cv2.COLOR_GRAY2BGR)
+                cfa0[0::2, 0::2, 0::2] = 0
+                cfa0[0::2, 1::2, 0:2] = 0 
+                cfa0[1::2, 0::2, 1:] = 0   
+                cfa0[1::2, 1::2, 0::2] = 0 
+                cfa1 = cv2.cvtColor(cfa1, cv2.COLOR_GRAY2BGR)
+                cfa1[::, 0::2, 0::2] = 0
+                cfa1[::2, 1::4,0:2] = 0
+                cfa1[1::2, 1::4,1:] = 0
+                cfa1[1::2, 3::4,:2] = 0  
+                cfa1[::2, 3::4,1:] = 0
+                cfa2 = cv2.cvtColor(cfa2, cv2.COLOR_GRAY2BGR)
+                cfa2[0::4, 0::2, 0::2] = 0
+                cfa2[1::4, 0::2, 0::2] = 0
+                cfa2[0::4, 1::2, 0:2] = 0 
+                cfa2[1::4, 1::2,1:] = 0
+                cfa2[2::4, 1::2, 0::2] = 0
+                cfa2[3::4, 1::2, 0::2] = 0 
+                cfa2[2::4, 0::2, 0:2] = 0 
+                cfa2[3::4, 0::2,1:] = 0
+                cfa3 = cv2.cvtColor(cfa3, cv2.COLOR_GRAY2BGR)
+                cfa3[::, 0::3, 0::2] = 0 
+                cfa3[::, 1::3, :2] = 0 
+                cfa3[::, 2::3, 1:] = 0  
+                cv2.imwrite(os.path.join(output, 'cfa0_' + file), cfa0)
+                cv2.imwrite(os.path.join(output, 'cfa1_' + file), cfa1)
+                cv2.imwrite(os.path.join(output, 'cfa2_' + file), cfa2)
+                cv2.imwrite(os.path.join(output, 'cfa3_' + file), cfa3)               
+    messagebox.showinfo("Success", "Successfully Converted to CFA")
+
 # function to exit
 def exit():
     root.destroy()
@@ -290,6 +360,8 @@ renamebutton.grid(row=4, column=2, padx=10, pady=10)
 histogrambutton = Button(root, text="Histogram Equalization", command=histogram_equalization)
 histogrambutton.grid(row=5, column=2, padx=10, pady=10)
 
+cfa_button = Button(root, text="CFA", command=cfa)
+cfa_button.grid(row=6, column=2, padx=10, pady=10)
 
 blurbutton = Button(root, text="Blur", command=blur)
 blurbutton.grid(row=7, column=2, padx=10, pady=10)
@@ -424,6 +496,8 @@ def darkmode():
     highfrequencybandfilterbutton.configure(background="black", foreground="gray")
     prefix_label.configure(background="black", foreground="gray")
     histogrambutton.configure(background="black", foreground="gray")
+    cfa_button.configure(background="black", foreground="gray")
+
 
 
 
@@ -455,17 +529,11 @@ def lightmode():
     highfrequencybandfilterbutton.configure(background="white", foreground="black")
     prefix_label.configure(background="white", foreground="black")
     histogrambutton.configure(background="white", foreground="black")
+    cfa_button.configure(background="white", foreground="black")
+
 
 darkmode_button = Button(root, text="Dark Mode", command=darkmode)
 darkmode_button.grid(row=1, column=7, padx=10, pady=10)
 
 lightmode_button = Button(root, text="Light Mode", command=lightmode)
 lightmode_button.grid(row=2, column=7, padx=10, pady=10)
-
-
-
-def easylabgui():
-    """
-    function to open easylab
-    """
-    root.mainloop()
