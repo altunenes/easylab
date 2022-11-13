@@ -9,13 +9,11 @@ This page gives an overview of the functions.
 
 +[rename](#rename)
 
-+[delete](#delete)
-
-+[clear](#clear)
-
 +[blur](#blur)
 
 +[change_extension](#change_extension)
+
++[Histogram equalization](#Histogram-equalization)
 
 +[gray](#gray)
 
@@ -39,13 +37,7 @@ outputfile is a function that opens a file browser and lets you select a folder 
 resize is a function that resizes all images in the folder to the desired size.
 
 ***rename***<a name="rename"></a>
-rename is a function that renames all images in the folder following a pattern: 01image, 02image, 03image, ...
-
-***delete***<a name="delete"></a>
-delete is a function that deletes all images in the folder.
-
-***clear***<a name="clear"></a>
-clear the selected folder and all its contents.
+rename is a function that renames all images in the folder with desired prefix.
 
 ***blur***<a name="blur"></a>
 blur is a function that applies gaussian blur to all images in the folder with the given sigma and kernel size.
@@ -55,6 +47,9 @@ change_extension is a function that changes all images' extensions to the desire
 
 ***gray***<a name="gray"></a>
 gray is a function that converts all images to GRAY.
+
+***Histogram equalization***<a name="Histogram-equalization"></a>
+Histogram equalization is a function that applies histogram equalization to all images in the folder. It is a method in which the image is transformed so that the intensity distribution is uniform. This method is useful to improve the contrast of images, especially when the usable data of the image is represented by close contrast values. Function uses cv2.equalizeHist().
 
 ***lowfrequencydomain***<a name="lowfrequencydomain"></a>
 lowfrequencydomain is a function that applies low frequency filter to all images in the folder with the given cutoff frequency.

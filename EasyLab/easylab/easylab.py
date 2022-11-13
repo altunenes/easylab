@@ -249,7 +249,20 @@ def rename():
 
     messagebox.showinfo("Success", "Successfully Renamed")
 
-
+def histogram_equalization():
+    global folder_path
+    folder = folder_path.get()
+    output = output_path.get()
+    for root, dirs, files in os.walk(folder):
+        for file in files:
+            if file.endswith(".jpg") or file.endswith(".png") or file.endswith(".jpeg") or file.endswith(
+                    ".bmp") or file.endswith(".tif"):
+                path = os.path.join(root, file)
+                img = cv2.imread(path)
+                img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                img = cv2.equalizeHist(img)
+                cv2.imwrite(os.path.join(output, file), img)
+    messagebox.showinfo("Success", "Successfully Histogram Equalized")
 
 # function to exit
 def exit():
@@ -273,6 +286,10 @@ removebutton.grid(row=3, column=2, padx=10, pady=10)
 
 renamebutton = Button(root, text="Rename", command=rename)
 renamebutton.grid(row=4, column=2, padx=10, pady=10)
+
+histogrambutton = Button(root, text="Histogram Equalization", command=histogram_equalization)
+histogrambutton.grid(row=5, column=2, padx=10, pady=10)
+
 
 blurbutton = Button(root, text="Blur", command=blur)
 blurbutton.grid(row=7, column=2, padx=10, pady=10)
@@ -364,11 +381,11 @@ height_SF_label.grid(row=11, column=0, padx=10, pady=10)
 height_SF_entry = Entry(root)
 height_SF_entry.grid(row=11, column=1, padx=10, pady=10)
 
-rename_prefix_label = Label(root, text="Rename Prefix")
-rename_prefix_label.grid(row=12, column=0, padx=10, pady=10)
+prefix_label = Label(root, text="Rename Prefix")
+prefix_label.grid(row=12, column=0, padx=10, pady=10)
 
-rename_prefix_entry = Entry(root)
-rename_prefix_entry.grid(row=12, column=1, padx=10, pady=10)
+prefix_entry = Entry(root)
+prefix_entry.grid(row=12, column=1, padx=10, pady=10)
 
 
 
@@ -376,7 +393,7 @@ def info():
     messagebox.showinfo("Easylab", "RMS (Contrast), Cutoff and N (order of the Butterworth) for the spatial frequency. Width SF and Height SF is about the dpi of the screen. it will be multiplied with 1000; for example, if you want 800x800 pixels enter the 0.8 for both labels")
 
 info_button = Button(root, text="Info", command=info)
-info_button.grid(row=12, column=0, padx=10, pady=10)
+info_button.grid(row=15, column=0, padx=10, pady=10)
 
 
 def darkmode():
@@ -405,6 +422,10 @@ def darkmode():
     graybutton.configure(background="black", foreground="gray")
     lowfrequencydomainbutton.configure(background="black", foreground="gray")
     highfrequencybandfilterbutton.configure(background="black", foreground="gray")
+    prefix_label.configure(background="black", foreground="gray")
+    histogrambutton.configure(background="black", foreground="gray")
+
+
 
 def lightmode():
     root.configure(background="white")
@@ -432,12 +453,15 @@ def lightmode():
     graybutton.configure(background="white", foreground="black")
     lowfrequencydomainbutton.configure(background="white", foreground="black")
     highfrequencybandfilterbutton.configure(background="white", foreground="black")
+    prefix_label.configure(background="white", foreground="black")
+    histogrambutton.configure(background="white", foreground="black")
 
 darkmode_button = Button(root, text="Dark Mode", command=darkmode)
-darkmode_button.grid(row=12, column=1, padx=10, pady=10)
+darkmode_button.grid(row=1, column=7, padx=10, pady=10)
 
 lightmode_button = Button(root, text="Light Mode", command=lightmode)
-lightmode_button.grid(row=13, column=1, padx=10, pady=10)
+lightmode_button.grid(row=2, column=7, padx=10, pady=10)
+
 
 
 def easylabgui():
