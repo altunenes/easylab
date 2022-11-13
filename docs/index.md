@@ -11,7 +11,7 @@ Offers simple solutions with GUI. From a folder, it can resize images, change th
 + Change extension
 + Apply spatial frequencies (low pass, high pass with Butterworth filter)
 + Apply Gaussian blur
-+ Apply gray scale filter (RGB to Gray)
++ Apply grayscale filter (RGB to Gray)
 + Rename images (with a prefix)
 + Remove background from images (Utilizes deep learning, so it is slow depending on the size of the images)
 + Apply histogram equalization 
