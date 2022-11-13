@@ -6,6 +6,8 @@
 
 Offers simple solutions with GUI. From a folder, it can resize images, change their extensions, applies spatial frequencies, and remove backgrounds...
 
+https://altunenes.github.io/easylab/
+
 #### Purpose of the project
 
 + The purpose of the project is to offer a simple solution to solve some of the problems that arise when working with big image datasets.
@@ -59,4 +61,4 @@ Contributions are welcome!
 
 ### Current look of the GUI
 
-![easylab.png](./docs/images/easylab.PNG)
+![easylab.png](./docs/images/easylab.png)
