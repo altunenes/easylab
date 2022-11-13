@@ -8,7 +8,7 @@ Offers simple solutions with GUI. From a folder, it can resize images, change th
 
 #### Purpose of the project
 
-+ The purpose of the project is to offer a simple solutions to solve some of the problems that arise when working with big image datasets.
++ The purpose of the project is to offer simple solutions to solve some of the problems that arise when working with big image datasets.
 + The project is a work in progress, and it is not finished yet. Since it offers GUI, it is very practical to use it.
 
 #### Features
