@@ -56,4 +56,4 @@ Contributions are welcome!
 
 ### Current look
 
-![easylab.png](./docs/images/easylab.png)
+![easylab](./images/easylab.png)
