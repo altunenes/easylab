@@ -1,6 +1,9 @@
 [![PyPI version](https://badge.fury.io/py/easylab.svg)](https://badge.fury.io/py/easylab)
 [![pages-build-deployment](https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment)
 [![Downloads](https://pepy.tech/badge/easylab)](https://pepy.tech/project/easylab)
+[![Build status](https://ci.appveyor.com/api/projects/status/bp4ids8wpon7vr3y?svg=true)](https://ci.appveyor.com/project/altunenes/easylab)
+
+
 
 #### EasyLab
 
