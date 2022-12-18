@@ -1,6 +1,9 @@
 [![PyPI version](https://badge.fury.io/py/easylab.svg)](https://badge.fury.io/py/easylab)
 [![pages-build-deployment](https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/altunenes/easylab/actions/workflows/pages/pages-build-deployment)
 [![Downloads](https://pepy.tech/badge/easylab)](https://pepy.tech/project/easylab)
+[![Build status](https://ci.appveyor.com/api/projects/status/bp4ids8wpon7vr3y?svg=true)](https://ci.appveyor.com/project/altunenes/easylab)
+
+
 
 #### EasyLab
 
@@ -15,7 +18,7 @@ Offers simple solutions with GUI. From a folder, it can resize images, change th
 
 + Resize images
 + Change extension
-+ Apply spatial frequencies (low pass, high pass with Butterworth filter)
++ Apply spatial frequencies (low pass, high pass; with Butterworth filter)
 + Apply Gaussian blur
 + Apply grayscale filter (RGB to Gray)
 + Rename images (with a desired prefix)
@@ -56,4 +59,4 @@ Contributions are welcome!
 
 ### Current look
 
-![easylab](./images/easylab.png)
+![easylab.png](./docs/images/easylab.png)
