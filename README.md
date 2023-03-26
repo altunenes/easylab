@@ -3,8 +3,8 @@
 [![Downloads](https://pepy.tech/badge/easylab)](https://pepy.tech/project/easylab)
 [![Build status](https://ci.appveyor.com/api/projects/status/bp4ids8wpon7vr3y?svg=true)](https://ci.appveyor.com/project/altunenes/easylab)
 
+![easy](https://user-images.githubusercontent.com/54986652/227799685-b61c1561-b3e5-4fe0-8c51-b0d88d8e61d7.jpg)
 
-![easylab](https://user-images.githubusercontent.com/54986652/227799641-5455d95d-816b-427e-bf74-5ab72dbf82e2.jpg)
 
 #### EasyLab
 
